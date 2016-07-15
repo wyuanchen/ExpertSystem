@@ -1,0 +1,29 @@
+body{
+    background: lavender;
+    padding:2px;
+}
+
+.content-div{
+    background: #ffffff;
+    border: 1px solid #ddd;
+    margin: 8px 7px 8px 12px;
+    padding: 8px;
+    border-radius: 5px;
+    float: left;
+}
+
+.navi{
+    /*position: fixed;*/
+    height: 98%;
+    width: 20%;
+    /*margin: 3px;*/
+    margin-left: 55px;
+}
+
+
+.home-container{
+    /*overflow: scroll;*/
+    height: 98%;
+    width: 70%;
+}
+
