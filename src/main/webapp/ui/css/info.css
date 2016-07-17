@@ -1,0 +1,172 @@
+body {
+    background: lavender;
+    padding: 2px;
+}
+.content-div {
+    background: #ffffff;
+    border: 1px solid #ddd;
+    margin: 8px 7px 8px 12px;
+    padding: 8px;
+    border-radius: 5px;
+    float: left;
+}
+.navi {
+    /*position: fixed;*/
+    height: 98%;
+    width: 20%;
+    /*margin: 3px;*/
+    margin-left: 55px;
+}
+.home-container {
+    overflow: scroll;
+    height: 98%;
+    width: 70%;
+}
+#panel_head {
+    /*padding-bottom: 2px;*/
+}
+
+#expert_panel{
+  /*height: 100%;*/
+  min-height: 100%;
+}
+
+/*导航栏的路径*/
+
+.head_list {
+    list-style: none;
+    margin-bottom: 0;
+    padding-left: 1px;
+}
+.head_list>li {
+    display: inline;
+    /*background: white;*/
+    margin-bottom: 0;
+    border-radius: 3px 3px 0 0;
+    padding-left: 8px;
+    padding-right: 10px;
+    padding-top: 6px;
+    padding-bottom: 3px;
+}
+.head_list>li>a {
+    color: white;
+}
+.head_list li+li {
+    margin-left: -11px;
+}
+.head_list li+li:before {
+    content: "/";
+    margin-right: 6px;
+    font-size: 17px;
+}
+
+/*end-导航栏的路径*/
+
+
+/*详细信息列表*/
+
+
+.content-div{
+    background: #ffffff;
+    border: 1px solid #ddd;
+    margin: 8px 7px 8px 12px;
+    padding: 8px;
+    border-radius: 5px;
+    float: left;
+}
+
+.navi{
+    /*position: fixed;*/
+    height: 98%;
+    width: 20%;
+    /*margin: 3px;*/
+    margin-left: 55px;
+}
+
+
+.home-container{
+    /*overflow: scroll;*/
+    height: 98%;
+    width: 70%;
+}
+
+
+.nav-bar{
+    background-color: aquamarine;
+}
+.info-body{
+    /*display:none;*/
+    height: 100%;
+
+}
+
+.btn-control{
+    padding-bottom: 6px;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 5px;
+}
+.head-info{
+    width:20%
+}
+
+#status{
+    color: red;
+    width: 20%;
+}
+.must:after{
+    color: red;
+    content:"*";
+    margin-left: 5px;
+}
+.must-input{
+    width:90%;
+    display: inline;
+}
+
+#clear-div{
+    clear: both;
+}
+
+
+.table-div{
+    /*height: 100%;*/
+    overflow: scroll;
+}
+
+.result{
+    width: 30%;
+}
+
+#btn-add-experience{
+  margin-bottom: 13px;
+  margin-left: 9px;
+}
+
+
+
+.evaluation_experience_td{
+    width: 22%;
+}
+
+.thead-avoid_unit_name{
+    width:50%;
+}
+
+
+.result-unit-name{
+    width:60%;
+}
+.result-is-work-place{
+    width:30%;
+}
+
+#field_error{
+    color: red;
+    display:none;
+}
+
+#picture{
+    width:51%;
+}
+
+/*end-详细信息列表*/
