@@ -208,7 +208,6 @@
                         <td>任务名称</td>
                         <td>任务描述</td>
                         <td id="mission-type">任务类型</td>
-                        <td>操作</td>
                     </tr>
                     </thead>
                     <tbody id="body_evaluation_experience">
@@ -253,7 +252,6 @@
                         <td>工作单位</td>
                         <td>职务</td>
                         <td>证明人</td>
-                        <td>操作</td>
                     </tr>
                     </thead>
 
@@ -297,7 +295,6 @@
                     <tr>
                         <td class="thead-avoid_unit_name">单位名称</td>
                         <td>是否工作单位</td>
-                        <td>操作</td>
                     </tr>
                     </thead>
                     <tbody id="avoid_unit_tbody">
@@ -368,37 +365,54 @@
 </div>
 
 
-<div class="template">
-    <table>
-        <tbody id="template_tr_expert_info">
-        <tr>
-            <td>
-                <a href="info.html?expertCertificateId=$expertCertificateId$">$expertCertificateId$</a>
-            </td>
-            <td>
-                $name$
-            </td>
-            <td>
-                $workplace$
-            </td>
-            <td>
-                $telephone$
-            </td>
-            <td>
-                $registerState$
-            </td>
-            <td>
-                $status$
-            </td>
-            <td>
-                <a href="info.html?expertCertificateId=$expertCertificateId$">显示评审项目</a>
-            </td>
-        </tr>
+<table class="template">
+    <tbody id="work_experience_tr_template">
+    <tr>
+        <td class='work-experience-td start_time'><input class='form-control must-input' readonly value="$startTime$"></td>
+        <td class='work-experience-td end_time'><input class='form-control must-input' readonly value="$endTime$"></td>
+        <td class='work-experience-td workplace'><input class='form-control must-input' readonly value="$workPlace$"></td>
+        <td class='work-experience-td post'><input class='form-control must-input' readonly value="$post$"></td>
+        <td class='work-experience-td  reference'><input class='form-control must-input' readonly value="$reference$"></td>
+
+    </tr>
+    </tbody>
+</table>
+
+<table class="template">
+    <tbody id="evaluation_tr_template">
+    <tr>
+        <td class="evaluation_experience_td result experience_time">
+            <input class="form-control" value="$experienceTime$" readonly>
+        </td>
+        <td class="evaluation_experience_td result mission_name">
+            <input class="form-control" value="$missionName$" readonly>
+        </td>
+        <td class="evaluation_experience_td result mission_description">
+            <input class="form-control" value="$missionDescription$" readonly>
+        </td>
+        <td class="evaluation_experience_td result mission_type">
+            <input class="form-control" value="$missionType$" readonly>
+        </td>
+
+    </tr>
+    </tbody>
+</table>
+
+<table class="template">
+    <tbody id="avoid_unit_tr_template">
+    <tr>
+        <td class='result-unit-name'>
+            <input class='form-control' value="$unitName$" readonly>
+        </td>
+        <td class='result-is-work-place'>
+            <input class="form-control" value="$isWorkPlace$" readonly>
+        </td>
+    </tr>
+    </tbody>
+</table>
 
 
-        </tbody>
-    </table>
-</div>
+
 
 
 
