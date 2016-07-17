@@ -61,21 +61,6 @@ CREATE TABLE IF NOT EXISTS `expert_system_db`.`expert` (
 ENGINE = InnoDB;
 
 
--- -----------------------------------------------------
--- Table `expert_system_db`.`administrator`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `expert_system_db`.`administrator` ;
-
-CREATE TABLE IF NOT EXISTS `expert_system_db`.`administrator` (
-  `user_name` VARCHAR(50) NOT NULL,
-  PRIMARY KEY (`user_name`),
-  INDEX `fk_table1_user1_idx` (`user_name` ASC),
-  CONSTRAINT `fk_table1_user1`
-    FOREIGN KEY (`user_name`)
-    REFERENCES `expert_system_db`.`user` (`user_name`)
-    ON DELETE CASCADE
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
