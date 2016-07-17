@@ -170,3 +170,32 @@ body {
 }
 
 /*end-详细信息列表*/
+
+td {
+    text-align: center;
+}
+
+
+/*管理员控制按钮的table*/
+#table_control{
+    margin-top: 40px;
+    margin-bottom: -10px;
+}
+#final_btn_div{
+    padding-top: 4px;
+    text-align: center;
+}
+/*end-管理员控制按钮的table*/
+
+
+/*驳回或者终止原因*/
+#fail_reason{
+    display: none;
+}
+.refuse{
+    display: none;
+}
+.end{
+    display: none;
+}
+/*end-驳回或者终止原因*/
