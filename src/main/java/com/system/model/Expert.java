@@ -6,6 +6,7 @@ import java.util.List;
  * Created by yuan on 7/14/16.
  */
 public class Expert extends User{
+    Integer expertId;
     String expertCertificateId;
     String certificateValidTime;
     String name;
@@ -19,7 +20,7 @@ public class Expert extends User{
     String address;
     Integer postcode;
     String university;
-    Integer telephone;
+    String telephone;
     String email;
     String homephone;
     String title;
@@ -34,12 +35,55 @@ public class Expert extends User{
     String businessSkill;
     String achievement;
     String others;
+    String organization;
 
     List<String> evaluationFields;
     List<Qualification> qualifications;
     List<AvoidanceUnit> avoidanceUnits;
     List<WorkExperience> workExperiences;
+    List<EvaluationExperience> evaluationExperiences;
     Reason reason;
+
+    public void setExpertId(Integer expertId) {
+        this.expertId = expertId;
+    }
+
+    public Integer getExpertId() {
+        return expertId;
+    }
+
+
+    public void setTelephone(String telephone) {
+        this.telephone = telephone;
+    }
+
+    public String getTelephone() {
+        return telephone;
+    }
+
+    public void setEvaluationExperiences(List<EvaluationExperience> evaluationExperiences) {
+        this.evaluationExperiences = evaluationExperiences;
+    }
+
+    public void setOrganization(String organization) {
+        this.organization = organization;
+    }
+
+    public String getOrganization() {
+        return organization;
+    }
+
+    public List<EvaluationExperience> getEvaluationExperiences() {
+        return evaluationExperiences;
+    }
+
+    public void setWorkExperiences(List<WorkExperience> workExperiences) {
+        this.workExperiences = workExperiences;
+    }
+
+    public List<WorkExperience> getWorkExperiences() {
+        return workExperiences;
+    }
 
     public void setReason(Reason reason) {
         this.reason = reason;
@@ -125,9 +169,6 @@ public class Expert extends User{
         return university;
     }
 
-    public Integer getTelephone() {
-        return telephone;
-    }
 
     public String getEmail() {
         return email;
@@ -237,9 +278,6 @@ public class Expert extends User{
         this.university = university;
     }
 
-    public void setTelephone(Integer telephone) {
-        this.telephone = telephone;
-    }
 
     public void setEmail(String email) {
         this.email = email;

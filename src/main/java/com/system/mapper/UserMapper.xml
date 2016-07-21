@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--code by yuan-->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.system.dao.UserDao">
+    <resultMap id="user" type="com.system.model.User">
+        <id column="user_name" property="userName"/>
+        <result column="password" property="password"/>
+        <result column="user_type" property="userType"/>
+    </resultMap>
+
+
+
+    <select id="getUserByUserName" resultMap="user">
+        SELECT * FROM `user` WHERE `user_name`=#{userName}
+    </select>
+    <insert id="addNewUser" parameterType="com.system.model.User">
+        INSERT INTO `user`(`user_name`,`password`,`user_type`) VALUE (#{userName},#{password},#{userType})
+    </insert>
+
+    <update id="changeUserPassword" parameterType="com.system.model.User">
+        UPDATE `user` SET `password`=#{password} WHERE `user_name`=#{userName}
+    </update>
+
+
+</mapper>

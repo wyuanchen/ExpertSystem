@@ -3,9 +3,8 @@
  */
 
 
-var expertInfo={
-    "expert":
-    {
+var expertInfoSample={
+
         "expertCertificateId":123123123,
         "certificateValidTime":"2014-02-01",
         "status":"可用",
@@ -35,7 +34,7 @@ var expertInfo={
         "achievement":"工作业绩",
         "others":"其他说明",
         "picturePath":"http://ww2.sinaimg.cn/crop.0.0.885.885.1024/6934a102jw8elmhozigdnj20ol0olmyv.jpg",
-    },
+
     "qualifications":  //资格证书以及编号
         [
             {
@@ -51,7 +50,7 @@ var expertInfo={
                 "qualificationId":"333333"
             }
         ],
-    "evalutionFields":
+    "evaluationFields":
         [
             "2.小学教育评估",
             "6.高校教育评估"
@@ -76,14 +75,14 @@ var expertInfo={
             {
                 "startTime":"2014-22-21",
                 "endTime":"2014-12-3",
-                "workPlace":"华南理工大学",
+                "workplace":"华南理工大学",
                 "post":"职务",
                 "reference":"证明人"
             },
             {
                 "startTime":"2014-22-21",
                 "endTime":"2014-12-3",
-                "workPlace":"华南理",
+                "workplace":"华南理",
                 "post":"职务",
                 "reference":"证明人"
             }
@@ -108,7 +107,7 @@ var isPermitModiry=false;
 
 function btn_add_certificate() {
     num_certificate++;
-    var newItem="<tr class='certificate-item certificate_tr'> <td class=\"result  certificate-name\"><input class='form-control must-input certificate-name-input ' ></td> <td class=\"result  certificate-num\"><input class='form-control must-input certificate-name-input' ></td> <td> <button type=\"button\" class=\"btn btn-danger  btn-delete-certificate btn_modify\">删除资格证书</button> </td> </tr>";
+    var newItem="<tr class='certificate-item certificate_tr qualification_tr'> <td class=\"result  certificate-name\"><input class='form-control must-input certificate-name-input ' ></td> <td class=\"result  certificate-num\"><input class='form-control must-input certificate-name-input' ></td> <td> <button type=\"button\" class=\"btn btn-danger  btn-delete-certificate btn_modify\">删除资格证书</button> </td> </tr>";
     $(".certificate_tr").eq(-1).after(newItem);
     $("#certificate-title").attr("rowspan",num_certificate);
 
@@ -146,7 +145,7 @@ function delete_work_experience() {
     $(this).parent().parent().remove();
 }
 function add_work_experience() {
-    var newItem="<tr> <td class='work-experience-td start_time'><input class='form-control must-input'></td> <td class='work-experience-td end_time'><input class='form-control must-input'></td> <td class='work-experience-td workplace'><input class='form-control must-input'></td> <td class='work-experience-td post'><input class='form-control must-input'></td> <td class='work-experience-td  reference'><input class='form-control must-input'></td> <td class='work-experience-td operation'> <button type='button' class='btn btn-danger btn_delete_work_experience_body  btn_modify'>删除</button> </td> </tr>";
+    var newItem="<tr class='work_experience_tr'> <td class='work-experience-td start_time'><input class='form-control must-input'></td> <td class='work-experience-td end_time'><input class='form-control must-input'></td> <td class='work-experience-td workplace'><input class='form-control must-input'></td> <td class='work-experience-td post'><input class='form-control must-input'></td> <td class='work-experience-td  reference'><input class='form-control must-input'></td> <td class='work-experience-td operation'> <button type='button' class='btn btn-danger btn_delete_work_experience_body  btn_modify'>删除</button> </td> </tr>";
     $("#work-experience-body").append(newItem);
 }
 function delete_avoid_unit() {
@@ -226,6 +225,7 @@ function addInfoBodyButtonListener() {
 
 function saveExpertInfoMidification() {
     banModifyExpertInfo();
+    requestUpdateExpertInfo();
 }
 
 function permitModifyExpertInfo(){
@@ -259,7 +259,7 @@ function setQualifications(info) {
             num_certificate++;
             var certificateName=info[i].qualificationName;
             var certificateId=info[i].qualificationId;
-            var newItem="<tr class='certificate-item certificate_tr'> <td class=\"result  certificate-name\"><input class='form-control must-input certificate-name-input ' readonly value='"+certificateName+"'></td> <td class=\"result  certificate-num\"><input class='form-control must-input certificate-name-input' readonly value='"+certificateId+"'></td> <td> <button type=\"button\" class=\"btn btn-danger  btn-delete-certificate   btn_modify\"  disabled='disabled' >删除资格证书</button> </td> </tr>";
+            var newItem="<tr class='certificate-item certificate_tr  qualification_tr'> <td class=\"result  certificate-name\"><input class='form-control must-input certificate-name-input ' readonly value='"+certificateName+"'></td> <td class=\"result  certificate-num\"><input class='form-control must-input certificate-name-input' readonly value='"+certificateId+"'></td> <td> <button type=\"button\" class=\"btn btn-danger  btn-delete-certificate   btn_modify\"  disabled='disabled' >删除资格证书</button> </td> </tr>";
             $(".certificate_tr").eq(-1).after(newItem);
             $("#certificate-title").attr("rowspan",num_certificate);
         }
@@ -310,15 +310,16 @@ function setAvoidUnits(avoidUnits) {
     }
 }
 
-function setExpertInfo() {
+function setExpertInfo(expertInfo) {
     var template=$("#home_container").html();
-    template=setBasicInfo(template,expertInfo.expert);
+    template=setBasicInfo(template,expertInfo);
     $("#home_container").html(template);
     setQualifications(expertInfo.qualifications);
-    setEvaluationField(expertInfo.evalutionFields);
+    setEvaluationField(expertInfo.evaluationFields);
     setWorkExperiences(expertInfo.workExperiences);
     setEvaluationExperiences(expertInfo.evaluationExperiences);
     setAvoidUnits(expertInfo.avoidanceUnits);
+    banModifyExpertInfo();
 }
 
 function showModifyExpertInfoList() {
@@ -326,8 +327,9 @@ function showModifyExpertInfoList() {
     $(".navi li").removeClass("active");
     $("#li_expertInfo").addClass("active");
     $(".info-body").show();
-    setExpertInfo();
-    banModifyExpertInfo();
+    requestExpert();
+    // setExpertInfo();
+    // banModifyExpertInfo();
 }
 function showIndexInfo() {
     hideOthersView();
@@ -415,7 +417,138 @@ function selectView() {
 
 window.onload=function () {
     // addInfoBodyButtonListener();
+    // setCookie();
     addClickListener();
     addInfoBodyButtonListener();
     selectView();
+}
+
+function setCookie() {
+    var url=serverUrl+"setCookie";
+    sendAjaxRequest(url,null,null);
+}
+
+function requestExpert() {
+    var url=serverUrl+"getExpert";
+    sendAjaxRequest(url,null,setExpertInfo);
+}
+
+function requestUpdateExpertInfo() {
+    var url=serverUrl+"updateExpert";
+    var params=wrapParams();
+    sendAjaxRequest(url,params,function () {
+        alert("save success!");
+    });
+}
+
+function wrapParams() {
+    var expert={}
+    var basicAttributes=$(".basic_info");
+    for(var i=0;i<basicAttributes.length;i++){
+        var key=basicAttributes.eq(i).attr("id");
+        var value=basicAttributes.eq(i).prop("value");
+        expert[key]=value;
+    }
+    var evaluationFields=wrapEvaluationFields();
+    expert["evaluationFields"]=evaluationFields;
+    var qualifications=wrapQualifications();
+    expert["qualifications"]=qualifications;
+    var evaluationExperiences=wrapEvaluationExperiences();
+    expert["evaluationExperiences"]=evaluationExperiences;
+    var workExperiences=wrapWorkExperiences();
+    expert["workExperiences"]=workExperiences;
+    var avoidanceUnits=wrapAvoidanceUnits();
+    expert["avoidanceUnits"]=avoidanceUnits;
+
+    return expert;
+}
+
+function wrapEvaluationFields() {
+    var fieldsValue=$("#evaluation_field").text().trim();
+    var evaluationFields=fieldsValue.split(",");
+    return evaluationFields;
+}
+
+function wrapQualifications() {
+    var qualifications=[];
+    var qualificationTrs=$(".qualification_tr")
+    for(var i=0;i<qualificationTrs.length;i++){
+        var qualificationName=qualificationTrs.eq(i).find("input").eq(0).prop("value").trim();
+        var qualificationId=qualificationTrs.eq(i).find("input").eq(1).prop("value").trim();
+        if(qualificationName==""||qualificationId=="")
+            continue;
+        qualifications.push(
+            {
+                "qualificationName":qualificationName,
+                "qualificationId":qualificationId
+            }
+        );
+    }
+    return qualifications;
+}
+function wrapEvaluationExperiences() {
+    var evaluationExperiences=[];
+    var evaluationExperiencesTrs=$(".evaluation_experiences_tr");
+    for(var i=0;i<evaluationExperiencesTrs.length-1;i++){
+        var item=evaluationExperiencesTrs.eq(i).find("input");
+        var experienceTime=item.eq(0).prop("value").trim();
+        var missionName=item.eq(1).prop("value").trim();
+        var missionDescription=item.eq(2).prop("value").trim();
+        var missionType=item.eq(3).prop("value").trim();
+        if(experienceTime==""&&missionName==""&&missionDescription==""&&missionType=="")
+            continue;
+        evaluationExperiences.push(
+            {
+                "experienceTime":experienceTime,
+                "missionName":missionName,
+                "missionDescription":missionDescription,
+                "missionType":missionType
+            }
+        );
+    }
+    return evaluationExperiences;
+}
+
+function wrapWorkExperiences() {
+    var workExperiences=[];
+    var workExperienceTrs=$(".work_experience_tr");
+    for(var i=0;i<workExperienceTrs.length-1;i++){
+        var item=workExperienceTrs.eq(i).find("input");
+        var startTime=item.eq(0).prop("value").trim();
+        var endTime=item.eq(1).prop("value").trim();
+        var workplace=item.eq(2).prop("value").trim();
+        var post=item.eq(3).prop("value").trim();
+        var reference=item.eq(4).prop("value").trim();
+        if(startTime==""&&endTime==""&&workplace==""&&post==""&&reference=="")
+            continue;
+        workExperiences.push(
+            {
+                "startTime":startTime,
+                "endTime":endTime,
+                "workplace":workplace,
+                "post":post,
+                "reference":reference
+            }
+        );
+    }
+    return workExperiences;
+}
+
+function wrapAvoidanceUnits() {
+    var avoidanceUnits=[];
+    var avoidUnitTrs=$(".avoid_unit_tr");
+    for(var i=0;i<avoidUnitTrs.length-1;i++){
+        var item=avoidUnitTrs.eq(i).find("input");
+        var unitName=item.eq(0).prop("value").trim();
+        var isWorkPlace=item.eq(1).prop("value").trim();
+        if(unitName==""&&isWorkPlace=="")
+            continue;
+        avoidanceUnits.push(
+            {
+                "unitName":unitName,
+                "isWorkPlace":isWorkPlace
+            }
+        );
+    }
+    return avoidanceUnits;
 }

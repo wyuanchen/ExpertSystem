@@ -14,4 +14,12 @@ public class Reason {
     public String getFailReason() {
         return failReason;
     }
+
+    public void setReasonType(String reasonType) {
+        this.reasonType = reasonType;
+    }
+
+    public String getReasonType() {
+        return reasonType;
+    }
 }

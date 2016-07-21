@@ -1,9 +1,17 @@
 var num_certificate=1;
 window.onload=function () {
-    setExpertInfo();
-    setOnclickListener();
+    requestExpertByExpertId();
+    // setExpertInfo();
+    // setOnclickListener();
 }
 
+
+//发送请求获取特定专家的信息
+function requestExpertByExpertId() {
+    var url=serverUrl+"getExpertById";
+    var params=getUrlParams();
+    sendAjaxRequest(url,params,setExpertInfo);
+}
 
 //进行一系列点击事件的监听者设置
 function setOnclickListener() {
@@ -28,15 +36,17 @@ function showEndReasonView() {
 
 
 //设置专家个人信息
-function setExpertInfo() {
+function setExpertInfo(expertInfo) {
     var template=$("#home_container").html();
-    template=setBasicInfo(template,expertInfo.expert);
+    template=setBasicInfo(template,expertInfo);
     $("#home_container").html(template);
     setQualifications(expertInfo.qualifications);
-    setEvaluationField(expertInfo.evalutionFields);
+    setEvaluationField(expertInfo.evaluationFields);
     setWorkExperiences(expertInfo.workExperiences);
     setEvaluationExperiences(expertInfo.evaluationExperiences);
     setAvoidUnits(expertInfo.avoidanceUnits);
+    setOnclickListener();
+
 }
 function setBasicInfo(template,info) {
     return fillTemplate(template,info);
@@ -106,8 +116,7 @@ function setAvoidUnits(avoidUnits) {
 
 
 var expertInfo={
-    "expert":
-    {
+
         "expertCertificateId":123123123,
         "certificateValidTime":"2014-02-01",
         "status":"可用",
@@ -137,7 +146,7 @@ var expertInfo={
         "achievement":"工作业绩",
         "others":"其他说明",
         "picturePath":"http://ww2.sinaimg.cn/crop.0.0.885.885.1024/6934a102jw8elmhozigdnj20ol0olmyv.jpg",
-    },
+
     "qualifications":  //资格证书以及编号
         [
             {
@@ -153,7 +162,7 @@ var expertInfo={
                 "qualificationId":"333333"
             }
         ],
-    "evalutionFields":
+    "evaluationFields":
         [
             "2.小学教育评估",
             "6.高校教育评估"

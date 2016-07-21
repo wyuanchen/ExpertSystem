@@ -30,7 +30,7 @@ function sendAjaxRequest(url, params, callBack) {
         },
         crossDomain: true,
         success: function(data) {
-            if (data != null) {
+            if (data != null&&callBack!=null) {
                 callBack(data);
             } else {
                 //alert('error!');
@@ -67,8 +67,8 @@ function getUrlParams() {
 function fillTemplate(template, jsonData) {
     return template.replace(/\$\w+\$/gi, function(matchs) {
         var value = jsonData[matchs.replace(/\$/g, "")];
-        return (value + "") == "undefined" ? "" : value;
+        return ((value + "") == "undefined"||(value + "") == "null") ? "" : value;
     });
 }
 var serverIP = "http://localhost:8080/";
-var serverUrl = serverIP + "cinema/";
+var serverUrl = serverIP;

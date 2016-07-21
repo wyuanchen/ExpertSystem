@@ -125,7 +125,7 @@
                         <td class="head-info">专家证书编号：</td>
                         <!--<td></td>-->
                         <td class="must result">
-                            <input class="form-control must-input" readonly value="$expertCertificateId$">
+                            <input class="form-control must-input basic_info" readonly value="$expertCertificateId$" id="expertCertificateId">
                         </td>
                         <td class="head-info">状态：</td>
                         <td id="status">$status$</td>
@@ -133,7 +133,7 @@
                     <tr>
                         <td>证书有效时间</td>
                         <td>
-                            <input class="form-control must-input" readonly value="$certificateValidTime$">
+                            <input class="form-control must-input basic_info" readonly value="$certificateValidTime$" id="certificateValidTime">
                         </td>
                         <td rowspan="4" colspan="2" style="text-align: center">
                             <img id="picture" src="$picturePath$" alt="头像" class="img-rounded">
@@ -142,14 +142,14 @@
                     <tr>
                         <td>专家姓名</td>
                         <td class="must">
-                            <input class="form-control must-input" readonly value="$name$">
+                            <input class="form-control must-input basic_info" readonly value="$name$" id="name">
                         </td>
                     </tr>
                     <tr>
                         <td>专家性别</td>
                         <td class="must">
                             <div class="input-group " style="float: left" >
-                                <input type="text" class="form-control " readonly value="$sex$">
+                                <input type="text" class="form-control basic_info" readonly value="$sex$" id="sex">
                                 <div class="input-group-btn">
                                     <button type="button" class="btn btn-default  btn_modify
                      dropdown-toggle " data-toggle="dropdown">
@@ -166,18 +166,18 @@
                     <tr>
                         <td>出身日期</td>
                         <td class="must">
-                            <input class="form-control must-input" readonly value="$birthday$">
+                            <input class="form-control must-input basic_info" readonly value="$birthday$" id="birthday">
                         </td>
                     </tr>
                     <tr>
                         <td>政治面貌</td>
                         <td class="must">
-                            <input class="form-control must-input" readonly value="$party$">
+                            <input class="form-control must-input basic_info" readonly value="$party$" id="party">
                         </td>
                         <td>证件类型</td>
                         <td class="must">
                             <div class="input-group">
-                                <input type="text" class="form-control" value="$certificateType$" readonly>
+                                <input type="text" class="form-control basic_info" value="$certificateType$" readonly id="certificateType">
                                 <div class="input-group-btn">
                                     <button type="button" class="btn btn-default btn_modify
                      dropdown-toggle" data-toggle="dropdown">
@@ -194,52 +194,51 @@
                     <tr>
                         <td>颁发机构</td>
                         <td class="must">
-                            <input class="form-control must-input" readonly value="$organization$">
+                            <input class="form-control must-input basic_info" readonly value="$organization$" id="organization">
 
                         </td>
                         <td>证件编号:</td>
                         <td class="must">
-                            <input class="form-control must-input" readonly value="$certificateId$">
-
+                            <input class="form-control must-input basic_info" readonly value="$certificateId$" id="certificateId">
                         </td>
                     </tr>
                     <tr>
                         <td>最高学历:</td>
                         <td class="must">
-                            <input class="form-control must-input" readonly value="$maxEducation$">
+                            <input class="form-control must-input basic_info" readonly value="$maxEducation$" id="maxEducation">
 
                         </td>
                         <td>最高学位:</td>
                         <!--<td></td>-->
                         <td class="must">
-                            <input class="form-control must-input" readonly value="$academicDegree$">
+                            <input class="form-control must-input basic_info" readonly value="$academicDegree$" id="academicDegree">
                         </td>
                     </tr>
                     <tr>
                         <td>职称:</td>
                         <td class="result must">
-                            <input class="form-control must-input" readonly value="$title$">
+                            <input class="form-control must-input basic_info" readonly value="$title$" id="title">
                         </td>
                         <td>证书编号:</td>
                         <td class="result">
-                            <input class="form-control must-input" readonly value="$diplomaId$">
+                            <input class="form-control must-input basic_info" readonly value="$diplomaId$" id="diplomaId">
                         </td>
                     </tr>
                     <tr>
                         <td>职务:</td>
                         <td class="result must">
-                            <input class="form-control must-input" readonly value="$post$">
+                            <input class="form-control must-input basic_info" readonly value="$post$" id="post">
                         </td>
                         <td>从业时长:</td>
                         <td class="result">
-                            <input class="form-control must-input" readonly value="$employmentDuration$">
+                            <input class="form-control must-input basic_info" readonly value="$employmentDuration$" id="employmentDuration">
                         </td>
                     </tr>
                     <tr>
                         <td>是否退休:</td>
                         <td class="must">
                             <div class="input-group">
-                                <input type="text" class="form-control" readonly value="$isRetire$">
+                                <input type="text" class="form-control basic_info" readonly value="$isRetire$" id="isRetire">
                                 <div class="input-group-btn">
                                     <button type="button" class="btn btn-default btn_modify
                      dropdown-toggle" data-toggle="dropdown">
@@ -255,7 +254,7 @@
                         <td>是否兼职:</td>
                         <td class="must">
                             <div class="input-group">
-                                <input type="text" class="form-control" readonly value="$isPartTime$">
+                                <input type="text" class="form-control basic_info" readonly value="$isPartTime$" id="isPartTime">
                                 <div class="input-group-btn">
                                     <button type="button" class="btn btn-default btn_modify
                      dropdown-toggle" data-toggle="dropdown">
@@ -272,42 +271,42 @@
                     <tr>
                         <td>工作单位:</td>
                         <td class="result must" colspan="3">
-                            <input class="form-control must-input" readonly value="$workplace$">
+                            <input class="form-control must-input basic_info" readonly value="$workplace$" id="workplace">
                         </td>
                     </tr>
                     <tr>
                         <td>详细通信地址:</td>
                         <td class="result must" colspan="3">
-                            <input class="form-control must-input" readonly value="$address$">
+                            <input class="form-control must-input basic_info" readonly value="$address$" id="address">
                         </td>
                     </tr>
                     <tr>
                         <td>邮政编码:</td>
                         <td class="result must">
-                            <input class="form-control must-input" readonly value="$postcode$">
+                            <input class="form-control must-input basic_info" readonly value="$postcode$" id="postcode">
                         </td>
                         <td>电子邮件:</td>
                         <td class="result must">
-                            <input class="form-control must-input" readonly value="$email$">
+                            <input class="form-control must-input basic_info" readonly value="$email$" id="email">
                         </td>
                     </tr>
                     <tr>
                         <td>移动电话:</td>
                         <td class="result must">
-                            <input class="form-control must-input" readonly value="$telephone$">
+                            <input class="form-control must-input basic_info" readonly value="$telephone$" id="telephone">
                         </td>
                         <td>家庭电话:</td>
                         <td class="result must">
-                            <input class="form-control must-input" readonly value="$homephone$">
+                            <input class="form-control must-input basic_info" readonly value="$homephone$" id="homephone">
                         </td>
                     </tr>
                     <tr>
                         <td>毕业院校及专业:</td>
                         <td class="result must" colspan="3">
-                            <input class="form-control must-input" readonly value="$university$">
+                            <input class="form-control must-input basic_info" readonly value="$university$" id="university">
                         </td>
                     </tr>
-                    <tr id="certificate-item-first" class="certificate_tr">
+                    <tr id="certificate-item-first" class="certificate_tr qualification_tr">
                         <td id="certificate-title">资格证书名及编号:</td>
                         <td class="result certificate-name">
                             <input class='form-control must-input certificate-name-input' readonly value=''>
@@ -484,12 +483,12 @@
                 <h2 style="float:left">业务专长</h2>
                 <h5 style="float:left;padding-top: 23px;">(不超过300个字)</h5>
                 <div style="clear: both"></div>
-                <textarea rows="5" class="form-control" readonly >$businessSkill$</textarea>
+                <textarea rows="5" class="form-control basic_info" readonly id="businessSkill">$businessSkill$</textarea>
 
                 <h2 style="float:left">工作业绩</h2>
                 <h5 style="float:left;padding-top: 23px;">(不超过300个字)</h5>
                 <div style="clear: both"></div>
-                <textarea rows="5" class="form-control" style="margin-bottom: 10px" readonly>$achievement$</textarea>
+                <textarea rows="5" class="form-control basic_info" style="margin-bottom: 10px" readonly id="achievement">$achievement$</textarea>
 
                 <h2 style="display: inline;">回避单位</h2>
                 <button type="button" class="btn btn-info btn_modify" id="btn_add_avoid_unit">增加回避单位</button>
@@ -532,7 +531,7 @@
                 <h2 style="float:left">其他说明</h2>
                 <h5 style="float:left;padding-top: 23px;">(不超过300个字)</h5>
                 <div style="clear: both"></div>
-                <textarea rows="5" class="form-control" readonly>$others$</textarea>
+                <textarea rows="5" class="form-control basic_info" readonly id="others">$others$</textarea>
             </div>
         </div>
     </div>
@@ -542,10 +541,10 @@
 
 <table class="template">
     <tbody id="work_experience_tr_template">
-    <tr>
+    <tr class="work_experience_tr">
         <td class='work-experience-td start_time'><input class='form-control must-input' readonly value="$startTime$"></td>
         <td class='work-experience-td end_time'><input class='form-control must-input' readonly value="$endTime$"></td>
-        <td class='work-experience-td workplace'><input class='form-control must-input' readonly value="$workPlace$"></td>
+        <td class='work-experience-td workplace'><input class='form-control must-input' readonly value="$workplace$"></td>
         <td class='work-experience-td post'><input class='form-control must-input' readonly value="$post$"></td>
         <td class='work-experience-td  reference'><input class='form-control must-input' readonly value="$reference$"></td>
         <td class='work-experience-td operation'>
@@ -557,7 +556,7 @@
 
 <table class="template">
     <tbody id="evaluation_tr_template">
-    <tr>
+    <tr class="evaluation_experiences_tr">
         <td class="evaluation_experience_td result experience_time">
             <input class="form-control" value="$experienceTime$">
         </td>
@@ -591,7 +590,7 @@
 
 <table class="template">
     <tbody id="avoid_unit_tr_template">
-    <tr>
+    <tr class="avoid_unit_tr">
         <td class='result-unit-name'>
             <input class='form-control' value="$unitName$">
         </td>

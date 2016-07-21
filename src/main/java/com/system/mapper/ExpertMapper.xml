@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--code by yuan-->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.system.dao.ExpertDao">
+
+    <resultMap id="expert" type="com.system.model.Expert">
+        <id column="user_name" property="userName"/>
+        <!--<result column="password" property="password"/>-->
+        <!--<result column="user_type" property="userType"/>-->
+        <result column="expert_certificate_id" property="expertCertificateId"/>
+        <result column="certificate_valid_time" property="certificateValidTime"/>
+        <result column="name" property="name"/>
+        <result column="sex" property="sex"/>
+        <result column="birthday" property="birthday"/>
+        <result column="party" property="party"/>
+        <result column="max_education" property="maxEducation"/>
+        <result column="certificate_type" property="certificateType"/>
+        <result column="certificate_id" property="certificateId"/>
+        <result column="academic_degree" property="academicDegree"/>
+        <result column="address" property="address"/>
+        <result column="postcode" property="postcode"/>
+        <result column="university" property="university"/>
+        <result column="telephone" property="telephone"/>
+        <result column="email" property="email"/>
+        <result column="homephone" property="homephone"/>
+        <result column="title" property="title"/>
+        <result column="post" property="post"/>
+        <result column="is_retire" property="isRetire"/>
+        <result column="workplace" property="workplace"/>
+        <result column="employment_duration" property="employmentDuration"/>
+        <result column="is_part_time" property="isPartTime"/>
+        <result column="picture_path" property="picturePath"/>
+        <result column="status" property="status"/>
+        <result column="diploma_id" property="diplomaId"/>
+        <result column="organization" property="organization"/>
+        <result column="business_skill" property="businessSkill"/>
+        <result column="achievement" property="achievement"/>
+        <result column="others" property="others"/>
+
+        <association property="reason" column="{userN=user_name}" select="selectReason"/>
+        <collection property="evaluationFields" column="{userName=user_name}" select="selectEvaluationFields"/>
+        <collection property="qualifications" column="{userName=user_name}" select="selectQualifications"/>
+        <collection property="avoidanceUnits" column="{userName=user_name}" select="selectAvoidanceUnits"/>
+        <collection property="workExperiences" column="{userName=user_name}" select="selectWorkExperiences"/>
+        <collection property="evaluationExperiences" column="{userName=user_name}" select="selectEvaluationExperience"/>
+    </resultMap>
+
+    <resultMap id="qualification" type="com.system.model.Qualification">
+        <id column="qualification_id" property="qualificationId"/>
+        <result column="qualification_name" property="qualificationName"/>
+    </resultMap>
+
+    <resultMap id="avoidanceUnit" type="com.system.model.AvoidanceUnit">
+        <id column="unit_name" property="unitName"/>
+        <result column="is_work_place" property="isWorkPlace"/>
+    </resultMap>
+
+    <resultMap id="workExperience" type="com.system.model.WorkExperience">
+        <id column="work_experience_id" property="workExperienceId"/>
+        <result column="start_time" property="startTime"/>
+        <result column="end_time" property="endTime"/>
+        <result column="workplace" property="workplace"/>
+        <result column="post" property="post"/>
+        <result column="reference" property="reference"/>
+    </resultMap>
+
+    <resultMap id="reason" type="com.system.model.Reason">
+        <id column="fail_reason" property="failReason"/>
+        <result column="reason_type" property="reasonType"/>
+    </resultMap>
+
+    <resultMap id="evaluationExperience" type="com.system.model.EvaluationExperience">
+        <id column="experience_id" property="experienceId"/>
+        <result column="experience_time" property="experienceTime"/>
+        <result column="mission_name" property="missionName"/>
+        <result column="mission_description" property="missionDescription"/>
+        <result column="mission_type" property="missionType"/>
+    </resultMap>
+
+    <select id="selectReason" resultMap="reason" parameterType="java.util.Map">
+        SELECT * FROM `reason` WHERE `user_name`=#{userN} limit 0,1
+    </select>
+    <select id="selectEvaluationFields" resultType="java.lang.String" parameterType="java.util.Map">
+        SELECT * FROM `evalution_field` WHERE `user_name`=#{userName}
+    </select>
+    <select id="selectQualifications" resultMap="qualification" parameterType="java.util.Map" >
+        SELECT * FROM `qualification` WHERE `user_name`=#{userName}
+    </select>
+    <select id="selectAvoidanceUnits" resultMap="avoidanceUnit" parameterType="java.util.Map">
+        SELECT * FROM `avoidance_unit` WHERE `user_name`=#{userName}
+    </select>
+    <select id="selectWorkExperiences" resultMap="workExperience" parameterType="java.util.Map">
+        SELECT * FROM `work_experience` WHERE `user_name`=#{userName}
+    </select>
+    <select id="selectEvaluationExperience" resultMap="evaluationExperience" parameterType="java.util.Map">
+        SELECT * FROM `evaluation_experience` WHERE `user_name`=#{userName}
+    </select>
+
+    <select id="getExpertByUserName" resultMap="expert">
+        SELECT * FROM
+        `user` NATURAL JOIN
+        `expert`
+        WHERE `user_name`=#{userName}
+    </select>
+
+    <select id="getExpertByExpertId" resultMap="expert">
+        SELECT * FROM
+        `expert`
+        WHERE `expert_id`=#{expertId}
+    </select>
+    <!--<select id="getExpertByUserName" resultMap="expert">-->
+    <!--SELECT * FROM-->
+    <!--`user` NATURAL JOIN-->
+    <!--`expert` NATURAL JOIN-->
+    <!--`work_experience` NATURAL JOIN-->
+    <!--`avoidance_unit` NATURAL JOIN-->
+    <!--`evaluation_experience` NATURAL JOIN-->
+    <!--`evalution_field` NATURAL JOIN-->
+    <!--`qualification` NATURAL JOIN-->
+    <!--`reason`-->
+    <!--WHERE `user_name`=#{userName}-->
+    <!--</select>-->
+
+
+
+    <!--<resultMap id="e" type="com.system.model.Expert">-->
+    <!--<id column="user_name" property="userName"/>-->
+    <!--<result column="password" property="password"/>-->
+    <!--<result column="user_type" property="userType"/>-->
+    <!--</resultMap>-->
+
+    <!--<select id="getExpertByUserName" resultMap="e">-->
+    <!--SELECT * FROM `user` WHERE `user_name`=#{userName}-->
+    <!--</select>-->
+
+    <!--<delete id="deleteExpert" >-->
+    <!--DELETE FROM `expert` WHERE `user_name`=#{userName}-->
+    <!--</delete>-->
+    <!--<delete id="deleteAvoidanceUnit" >-->
+    <!--DELETE FROM `avoidance_unit` WHERE `user_name`=#{userName}-->
+    <!--</delete>-->
+    <!--<delete id="deleteEvaluationExperience" >-->
+    <!--DELETE FROM `evaluation_experience` WHERE `user_name`=#{userName}-->
+    <!--</delete>-->
+    <!--<delete id="deleteWorkExperience" >-->
+    <!--DELETE FROM `work_experience` WHERE `user_name`=#{userName}-->
+    <!--</delete>-->
+    <!--<delete id="deleteQualification" >-->
+    <!--DELETE FROM `qualification` WHERE `user_name`=#{userName}-->
+    <!--</delete>-->
+    <!--<delete id="deleteReason">-->
+    <!--DELETE FROM `reason` WHERE `user_name`=#{userName}-->
+    <!--</delete>-->
+
+
+
+    <insert id="setExpert" parameterType="com.system.model.Expert">
+        DELETE FROM `expert` WHERE `user_name`=#{userName};
+        DELETE FROM `evalution_field` WHERE `user_name`=#{userName};
+        DELETE FROM `avoidance_unit` WHERE `user_name`=#{userName};
+        DELETE FROM `evaluation_experience` WHERE `user_name`=#{userName};
+        DELETE FROM `work_experience` WHERE `user_name`=#{userName};
+        DELETE FROM `qualification` WHERE `user_name`=#{userName};
+        INSERT INTO `expert`(`user_name`,`expert_certificate_id`,`certificate_valid_time`,`name`,`sex`,`birthday`,`party`,`max_education`,`certificate_type`,`certificate_id`,`academic_degree`,`address`,`postcode`,`university`,`telephone`,`email`,`homephone`,`title`,`post`,`is_retire`,`workplace`,`employment_duration`,`is_part_time`,`picture_path`,`status`,`diploma_id`,`business_skill`,`achievement`,`others`,`organization`)
+        VALUE (#{userName},#{expertCertificateId},#{certificateValidTime},#{name},#{sex},#{birthday},#{party},#{maxEducation},#{certificateType},#{certificateId},#{academicDegree},#{address},#{postcode},#{university},#{telephone},#{email},#{homephone},#{title},#{post},#{isRetire},#{workplace},#{employmentDuration},#{isPartTime},#{picturePath},#{status},#{diplomaId},#{businessSkill},#{achievement},#{others},#{organization});
+        <if test="avoidanceUnits!=null and avoidanceUnits.size()>0">
+            INSERT INTO `avoidance_unit`(`unit_name`,`is_work_place`,`user_name`) VALUES
+            <foreach collection="avoidanceUnits" item="unit" index="index" separator=" , ">
+                (#{unit.unitName},#{unit.isWorkPlace},#{userName})
+            </foreach>
+            ;
+        </if>
+        <if test="evaluationFields!=null and evaluationFields.size()>0">
+            INSERT INTO `evalution_field`(`idevalution_field_name`,`user_name`) VALUES
+            <foreach collection="evaluationFields" item="field" index="index" separator=" , ">
+                (#{field},#{userName})
+            </foreach>
+            ;
+        </if>
+        <if test="qualifications!=null and qualifications.size()>0">
+            INSERT INTO `qualification`(`qualification_name`,`qualification_id`,`user_name`) VALUES
+            <foreach collection="qualifications" item="item" index="index" separator=" , ">
+                (#{item.qualificationName},#{item.qualificationId},#{userName})
+            </foreach>
+            ;
+        </if>
+        <if test="workExperiences!=null and workExperiences.size()>0">
+            INSERT INTO `work_experience`(`work_experience_id`,`start_time`,`end_time`,`workplace`,`post`,`reference`,`user_name`) VALUES
+            <foreach collection="workExperiences" item="item" index="index" separator=" , ">
+                (#{item.workExperienceId},#{item.startTime},#{item.endTime},#{item.workplace},#{item.post},#{item.reference},#{userName})
+            </foreach>
+            ;
+        </if>
+        <if test="evaluationExperiences!=null and evaluationExperiences.size()>0">
+            INSERT INTO `evaluation_experience`(`experience_time`,`mission_name`,`mission_description`,`mission_type`,`user_name`) VALUES
+            <foreach collection="evaluationExperiences" item="item" index="index" separator=" , ">
+                (#{item.experienceTime},#{item.missionName},#{item.missionDescription},#{item.missionType},#{userName})
+            </foreach>
+            ;
+        </if>
+    </insert>
+
+
+</mapper>

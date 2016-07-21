@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--code by yuan-->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.system.dao.ReasonDao">
+
+    <insert id="addFailReason" parameterType="com.system.model.Reason">
+        DELETE FROM `reason` WHERE `user_name`=#{userName};
+        INSERT INTO `reason`(`user_name`,`fail_reason`,`reason_type`) VALUE
+        (#{userName},#{failReason},#{reasonType})
+    </insert>
+</mapper>
