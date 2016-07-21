@@ -4,6 +4,7 @@ import com.system.dao.ExpertDao;
 import com.system.dao.ReasonDao;
 import com.system.dao.UserDao;
 import com.system.model.Expert;
+import com.system.model.User;
 import com.system.service.ManageService;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +16,7 @@ import javax.annotation.Resource;
 @Service
 public class ManageServiceImpl implements ManageService{
 
+    private int expertIdSeed=20121;
     @Resource
     private ExpertDao expertDao;
     @Resource
@@ -35,4 +37,58 @@ public class ManageServiceImpl implements ManageService{
     public Expert getExpertByExpertId(Integer expertId){
         return expertDao.getExpertByExpertId(expertId);
     }
+
+    public int registerNewExpert(User user) {
+        int result=userDao.addNewUser(user);
+        if(result<=0)
+            return -1;
+        return generateExpertId();
+    }
+
+    public boolean registerNewAdmin(User user) {
+        int result=userDao.addNewUser(user);
+        if(result>0)
+            return true;
+        return false;
+    }
+
+
+    private int generateExpertId(){
+        return expertIdSeed++;
+    }
+
+    public boolean checkUserValid(User user){
+        String userName=user.getUserName();
+        User realUser=userDao.getUserByUserName(userName);
+        String userType=user.getUserType();
+        String realUserType=realUser.getUserType();
+        String password=user.getPassword();
+        String realPassword=realUser.getPassword();
+        if(realUser==null||realUserType.equals(userType))
+            return false;
+        if(checkPasswordValid(realPassword,password))
+            return true;
+        return false;
+    }
+
+    private boolean checkPasswordValid(String realPassword, String password) {
+        return realPassword.equals(password);
+    }
+
+    public int getExpertId(String userName){
+        int expertId=expertDao.getExpertIdByUserName(userName);
+        return expertId;
+    }
+
+    public boolean changePassword(String userName, String oldPassword, String newPassowrd){
+        User user=userDao.getUserByUserName(userName);
+        String realPassword=user.getPassword();
+        if(!checkPasswordValid(realPassword,oldPassword))
+            return false;
+        user.setPassword(newPassowrd);
+        userDao.changeUserPassword(user);
+        return true;
+    }
+
+
 }

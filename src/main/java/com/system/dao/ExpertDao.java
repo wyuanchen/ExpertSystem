@@ -16,4 +16,5 @@ public interface ExpertDao {
 //    public int deleteQualification(Expert expert);
 //    public int deleteReason(Expert expert);
     public Expert getExpertByExpertId(@Param("expertId")Integer expertId);
+    public int getExpertIdByUserName(@Param("userName")String userName);
 }

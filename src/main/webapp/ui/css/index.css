@@ -16,7 +16,7 @@
     border: 1px solid;
     border-radius: 3px;
     margin-top: 10px;
-    display: none;
+    /*display: none;*/
 }
 
 #signup{
@@ -35,6 +35,7 @@
 #signup-div{
     text-align: center;
     margin-top: 40px;
+    display: none;
 }
 
 .tip{

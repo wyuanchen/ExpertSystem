@@ -200,5 +200,9 @@
         </if>
     </insert>
 
+    
+    <select id="getExpertIdByUserName" parameterType="java.lang.String">
+        select `expert_id` FROM `epxert` WHERE `user_name`=#{userName};
+    </select>
 
 </mapper>
