@@ -3,14 +3,16 @@
  */
 var isPasswordOk=false;
 var isPasswordConsistent=false;
-var isValidCodeOk=true;
+var isValidCodeOk=false;
 var isUserNameOk=false;
 var userType="专家";
 
 window.onload=function () {
+    initializeValidCodeImg();
     setUserType();
     addOnclickListen();
     addFocusOutListener();
+
 }
 
 //获取用户类型
@@ -26,7 +28,8 @@ function setUserType() {
 //设置点击事件监听者
 function addOnclickListen() {
     $("body").on("click","#btn_submit_register",submitRegisterUser);
-    
+    $("body").on("click","#valid-img2",changeValidCode);
+
 }
 
 //设置输入框失去焦点触发的监听器
@@ -34,6 +37,7 @@ function addFocusOutListener() {
     $("body").on("focusout","#user_name",checkUserName);
     $("body").on("focusout","#password",checkPassword);
     $("body").on("focusout","#password2",checkPasswordConsistent);
+    $("body").on("focusout","#valid_code",checkValidCode);
 }
 
 //检验用户名格式是否正确
@@ -141,3 +145,32 @@ function handleRegisterResult(result) {
     }
 }
 
+function initializeValidCodeImg() {
+    var url=serverUrl+"getNewValidCode?"
+    $("#valid-img2").prop("src",url);
+}
+
+//请求新的验证码
+function changeValidCode() {
+    var url=$(this).prop("src");
+    url=url+Math.random();
+    $(this).prop("src",url);
+}
+
+//检验验证码
+function checkValidCode() {
+    isValidCodeOk=false;
+    var validCode=$(this).prop("value");
+    var url=serverUrl+"checkValidCode";
+    var params={
+        "validCode":validCode,
+    };
+    sendAjaxRequest(url,params,function (result) {
+        if(result!=null&&result.status=="ok"){
+            isValidCodeOk=true;
+            alert("验证码正确!");
+        }else{
+            alert("验证码错误!");
+        }
+    });
+}

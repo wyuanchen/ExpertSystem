@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.system.model.User;
 import com.system.service.CookieService;
 import com.system.service.ManageService;
+import com.system.service.ValidCodeService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,7 +30,8 @@ public class UserController {
     ManageService manageService;
     @Resource
     CookieService cookieService;
-
+    @Resource
+    ValidCodeService validCodeService;
 
     @RequestMapping("/register")
     public @ResponseBody Object registerNewUser(@RequestBody User user,HttpServletResponse response){
@@ -102,8 +104,33 @@ public class UserController {
         return result;
     }
 
+    /**
+     * 生成新的验证码
+     * @param requet
+     * @param response
+     */
+    @RequestMapping("/getNewValidCode")
+    public void getNewValidCode(HttpServletRequest requet,HttpServletResponse response){
+        validCodeService.generateValidCode(requet,response);
+    }
 
 
+    /**
+     * 检验验证码
+     * @param params
+     * @return
+     */
+    @RequestMapping("/checkValidCode")
+    public @ResponseBody Object checkValidCode(@RequestBody JSONObject params,HttpServletRequest request){
+        Map<String,Object> result=new HashMap<String, Object>();
+        String validCode=params.getString("validCode");
+        boolean isValidRight=validCodeService.checkValidCodeIsRight(validCode,request);
+        if(isValidRight)
+            result.put(keyStatus,valueStatusOk);
+        else
+            result.put(keyStatus,valueStatusFail);
+        return result;
+    }
 
 
 
