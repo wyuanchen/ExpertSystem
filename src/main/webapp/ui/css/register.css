@@ -45,3 +45,14 @@ label{
 #user_name_result_nonavailable{
     display: none;
 }
+
+#password_result_avail{
+    display: none;
+}
+#password_result_nonavail{
+    display: none;
+}
+
+#password_comfirm_error{
+    display: none;
+}

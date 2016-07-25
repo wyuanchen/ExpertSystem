@@ -1,7 +1,8 @@
 /**
  * Created by yuan on 7/21/16.
  */
-var isPasswordOk=true;
+var isPasswordOk=false;
+var isPasswordConsistent=false;
 var isValidCodeOk=true;
 var isUserNameOk=false;
 var userType="专家";
@@ -21,9 +22,11 @@ function addOnclickListen() {
 //设置输入框失去焦点触发的监听器
 function addFocusOutListener() {
     $("body").on("focusout","#user_name",checkUserName);
+    $("body").on("focusout","#password",checkPassword);
+    $("body").on("focusout","#password2",checkPasswordConsistent);
 }
 
-//建议用户名格式是否正确
+//检验用户名格式是否正确
 function checkUserName() {
     isUserNameOk=false;
     $("#user_name_result_nonavailable").hide();
@@ -36,6 +39,33 @@ function checkUserName() {
     }else{
         $("#user_name_result_nonavailable").show();
     }
+}
+//检验密码格式是否正确
+function checkPassword() {
+    isPasswordOk=false;
+    $("#password_result_avail").hide();
+    $("#password_result_nonavail").hide();
+    var re=/^[a-zA-Z0-9._@#]{6,20}$/g;
+    var password=$("#password").prop("value");
+    if(re.test(password)){
+        $("#password_result_avail").show();
+        isPasswordOk=true;
+    }else{
+        $("#password_result_nonavail").show();
+    }
+}
+
+//检验两次密码是否一致
+function checkPasswordConsistent() {
+    isPasswordConsistent=false;
+    $("#password_comfirm_error").hide();
+    var password=$("#password").prop("value");
+    var password2=$("#password2").prop("value");
+    if(password==password2)
+        isPasswordConsistent=true;
+    else
+        $("#password_comfirm_error").show();
+
 }
 
 //提交注册用户申请
@@ -58,7 +88,7 @@ function checkDataFormat() {
     if(!isUserNameOk){
         alert("用户名格式错误，请重新填写!");
         return false;
-    }else if(!isPasswordOk){
+    }else if(!isPasswordOk||!isPasswordConsistent){
         alert("密码格式错误，请重新填写!");
         return false;
     }else if(!isValidCodeOk){
