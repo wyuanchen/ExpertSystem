@@ -89,6 +89,19 @@ public class UserController {
         return result;
     }
 
+    @RequestMapping("/checkUserNameUnique")
+    public @ResponseBody Object checkUserNameUnique(@RequestBody JSONObject params){
+        Map<String,Object> result=new HashMap<String, Object>();
+        String userName=params.getString("userName");
+        boolean isUnique=manageService.checkUserNameUnique(userName);
+        if(isUnique){
+            result.put(keyStatus,valueStatusOk);
+        }else{
+            result.put(keyStatus,valueStatusFail);
+        }
+        return result;
+    }
+
 
 
 

@@ -44,12 +44,30 @@ function checkUserName() {
     var re=/^[a-zA-Z][\w.]{4,19}$/g;
     var userName=$("#user_name").prop("value");
     if(re.test(userName)){
-        $("#user_name_result_available").show();
-        isUserNameOk=true;
+        // $("#user_name_result_available").show();
+        // isUserNameOk=true;
+        checkUserNameUnique(userName);
     }else{
         $("#user_name_result_nonavailable").show();
     }
 }
+//检验用户名是否唯一
+function checkUserNameUnique(userName) {
+    var url=serverUrl+"checkUserNameUnique";
+    var params={
+        "userName":userName,
+    };
+    sendAjaxRequest(url,params,function (result) {
+        if(result!=null&&result.status=="ok"){
+            isUserNameOk=true;
+            $("#user_name_result_available").show();
+        }else{
+            $("#user_name_result_nonavailable").show();
+        }
+    });
+}
+
+
 //检验密码格式是否正确
 function checkPassword() {
     isPasswordOk=false;

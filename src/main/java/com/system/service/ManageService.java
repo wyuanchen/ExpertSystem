@@ -21,4 +21,6 @@ public interface ManageService {
     int getExpertId(String userName);
 
     boolean changePassword(String userName, String oldPassword, String newPassowrd);
+
+    boolean checkUserNameUnique(String userName);
 }

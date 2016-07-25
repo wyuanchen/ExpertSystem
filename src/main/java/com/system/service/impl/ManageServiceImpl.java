@@ -94,5 +94,12 @@ public class ManageServiceImpl implements ManageService{
         return true;
     }
 
+    public boolean checkUserNameUnique(String userName){
+        User user=userDao.getUserByUserName(userName);
+        if(user==null)
+            return true;
+        return false;
+    }
+
 
 }
