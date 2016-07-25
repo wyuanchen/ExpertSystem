@@ -37,3 +37,11 @@ label{
     font-size: 13px;
     line-height: 32px;
 }
+
+#user_name_result_available{
+    display: none;
+}
+
+#user_name_result_nonavailable{
+    display: none;
+}

@@ -3,11 +3,12 @@
  */
 var isPasswordOk=true;
 var isValidCodeOk=true;
-var isUserName=true;
+var isUserNameOk=false;
 var userType="专家";
 
 window.onload=function () {
     addOnclickListen();
+    addFocusOutListener();
 }
 
 
@@ -17,6 +18,25 @@ function addOnclickListen() {
     
 }
 
+//设置输入框失去焦点触发的监听器
+function addFocusOutListener() {
+    $("body").on("focusout","#user_name",checkUserName);
+}
+
+//建议用户名格式是否正确
+function checkUserName() {
+    isUserNameOk=false;
+    $("#user_name_result_nonavailable").hide();
+    $("#user_name_result_available").hide();
+    var re=/^[a-zA-Z][\w.]{4,19}$/g;
+    var userName=$("#user_name").prop("value");
+    if(re.test(userName)){
+        $("#user_name_result_available").show();
+        isUserNameOk=true;
+    }else{
+        $("#user_name_result_nonavailable").show();
+    }
+}
 
 //提交注册用户申请
 function submitRegisterUser() {
@@ -35,7 +55,7 @@ function submitRegisterUser() {
 
 //检查用户名，密码，验证码格式
 function checkDataFormat() {
-    if(!isUserName){
+    if(!isUserNameOk){
         alert("用户名格式错误，请重新填写!");
         return false;
     }else if(!isPasswordOk){
