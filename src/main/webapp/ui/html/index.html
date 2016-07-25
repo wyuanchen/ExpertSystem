@@ -36,14 +36,14 @@
         <div class="form-group">
             <label class="col-md-2 col-md-offset-2 control-label">账号:</label>
             <div class="col-md-4">
-                <input class="form-control" placeholder="请输入账号">
+                <input class="form-control" placeholder="请输入账号" id="userName">
             </div>
-            <a id="signup" href="register.html">注册</a>
+            <a id="signup" href="register.html?userType=专家">注册</a>
         </div>
         <div class="form-group">
             <label class="col-md-2 col-md-offset-2 control-label">密码:</label>
             <div class="col-md-4">
-                <input type="text" class="form-control" placeholder="请输入密码">
+                <input type="text" class="form-control" placeholder="请输入密码" id="password">
             </div>
         </div>
         <div class="form-group">
@@ -57,80 +57,12 @@
         </div>
         <div class="form-group">
             <div class="col-md-3 col-md-offset-5" >
-                <button type="submit" class="btn btn-success" id="btn">登陆</button>
+                <button type="button" class="btn btn-success" id="btn_signin">登陆</button>
             </div>
 
         </div>
     </form>
 </div>
-
-
-<div class="container" id="signup-div">
-    <h2>注册新账号</h2>
-    <form class="form-horizontal">
-        <div class="form-group">
-            <label class="col-md-1 col-md-offset-3">用户名:</label>
-            <div class="col-md-4">
-                <input class="form-control" placeholder="请入用户名">
-            </div>
-            <div class="col-md-1">
-                <span class="label label-success result">可用</span>
-                <!--<span class="label label-danger result">不可用</span>-->
-
-            </div>
-        </div>
-        <div class="row tip">
-            <h5>请输入5-20个以字母开头，可带数字、"_","."的字符串</h5>
-        </div>
-        <div class="form-group">
-            <label class="col-md-1 col-md-offset-3">密码:</label>
-            <div class="col-md-4">
-                <input class="form-control" placeholder="请入密码">
-            </div>
-            <div class="col-md-1">
-                <!--<span class="label label-success result">可用</span>-->
-                <!--<span class="label label-danger result">不可用</span>-->
-
-            </div>
-        </div>
-        <div class="row tip">
-            <h5>密码由6-20个字符组成，区分大小写</h5>
-        </div>
-        <div class="form-group">
-            <label class="col-md-1 col-md-offset-3">密码确认:</label>
-            <div class="col-md-4">
-                <input class="form-control" placeholder="请再一次确认密码">
-                <p class="text-danger">两次输入的密码不同，请重新输入</p>
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="col-md-1 col-md-offset-3">验证码:</label>
-            <div class="col-md-4">
-                <input class="form-control" placeholder="请再一次确认密码">
-            </div>
-            <div class="col-md-2 ">
-                <img id="valid-img2" src="http://www.qiaosheji.com/supesite/attachments/Upload/News/2009-3/2009033110030747509.jpg">
-            </div>
-        </div>
-        <div class="row tip">
-            <h5>请填写图片中的字符，不区分大小写</h5>
-        </div>
-        <div class="row">
-            <div class="col-md-2 col-md-offset-4">
-                <button type="button" class="btn btn-success">注册</button>
-            </div>
-            <div class="col-md-2">
-                <button type="reset" class="btn btn-primary">重置</button>
-            </div>
-        </div>
-    </form>
-
-
-</div>
-
-
-
-
 
 
 

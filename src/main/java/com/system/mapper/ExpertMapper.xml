@@ -153,16 +153,23 @@
     <!--</delete>-->
 
 
+    <insert id="addNewExpert" parameterType="java.lang.String" >
+        INSERT INTO `expert`(`user_name`) VALUE (#{userName})
+    </insert>
 
     <insert id="setExpert" parameterType="com.system.model.Expert">
-        DELETE FROM `expert` WHERE `user_name`=#{userName};
         DELETE FROM `evalution_field` WHERE `user_name`=#{userName};
         DELETE FROM `avoidance_unit` WHERE `user_name`=#{userName};
         DELETE FROM `evaluation_experience` WHERE `user_name`=#{userName};
         DELETE FROM `work_experience` WHERE `user_name`=#{userName};
         DELETE FROM `qualification` WHERE `user_name`=#{userName};
-        INSERT INTO `expert`(`user_name`,`expert_certificate_id`,`certificate_valid_time`,`name`,`sex`,`birthday`,`party`,`max_education`,`certificate_type`,`certificate_id`,`academic_degree`,`address`,`postcode`,`university`,`telephone`,`email`,`homephone`,`title`,`post`,`is_retire`,`workplace`,`employment_duration`,`is_part_time`,`picture_path`,`status`,`diploma_id`,`business_skill`,`achievement`,`others`,`organization`)
-        VALUE (#{userName},#{expertCertificateId},#{certificateValidTime},#{name},#{sex},#{birthday},#{party},#{maxEducation},#{certificateType},#{certificateId},#{academicDegree},#{address},#{postcode},#{university},#{telephone},#{email},#{homephone},#{title},#{post},#{isRetire},#{workplace},#{employmentDuration},#{isPartTime},#{picturePath},#{status},#{diplomaId},#{businessSkill},#{achievement},#{others},#{organization});
+        UPDATE `expert` SET
+        `name`=#{name},`sex`=#{sex},`birthday`=#{birthday},
+        `party`=#{party},`max_education`=#{maxEducation},`certificate_type`=#{certificateType},
+        `certificate_id`=#{certificateId},`academic_degree`=#{academicDegree},`address`=#{address},`postcode`=#{postcode},
+        `university`=#{university},`telephone`=#{telephone},`email`=#{email},`homephone`=#{homephone},`title`=#{title},`post`=#{post},`is_retire`=#{isRetire},`workplace`=#{workplace},`employment_duration`=#{employmentDuration},`is_part_time`=#{isPartTime},`picture_path`=#{picturePath},`status`=#{status},`diploma_id`=#{diplomaId},`business_skill`=#{businessSkill},`achievement`=#{achievement},`others`=#{others},`organization`=#{organization}
+        WHERE `user_name`=#{userName};
+
         <if test="avoidanceUnits!=null and avoidanceUnits.size()>0">
             INSERT INTO `avoidance_unit`(`unit_name`,`is_work_place`,`user_name`) VALUES
             <foreach collection="avoidanceUnits" item="unit" index="index" separator=" , ">
@@ -204,5 +211,9 @@
     <select id="getExpertIdByUserName" parameterType="java.lang.String">
         select `expert_id` FROM `epxert` WHERE `user_name`=#{userName};
     </select>
+
+
+    <!--INSERT INTO `expert`(`user_name`,`expert_certificate_id`,`certificate_valid_time`,`name`,`sex`,`birthday`,`party`,`max_education`,`certificate_type`,`certificate_id`,`academic_degree`,`address`,`postcode`,`university`,`telephone`,`email`,`homephone`,`title`,`post`,`is_retire`,`workplace`,`employment_duration`,`is_part_time`,`picture_path`,`status`,`diploma_id`,`business_skill`,`achievement`,`others`,`organization`)
+        VALUE (#{userName},#{expertCertificateId},#{certificateValidTime},#{name},#{sex},#{birthday},#{party},#{maxEducation},#{certificateType},#{certificateId},#{academicDegree},#{address},#{postcode},#{university},#{telephone},#{email},#{homephone},#{title},#{post},#{isRetire},#{workplace},#{employmentDuration},#{isPartTime},#{picturePath},#{status},#{diplomaId},#{businessSkill},#{achievement},#{others},#{organization});-->
 
 </mapper>

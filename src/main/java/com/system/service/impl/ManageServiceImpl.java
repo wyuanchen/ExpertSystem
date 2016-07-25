@@ -40,9 +40,10 @@ public class ManageServiceImpl implements ManageService{
 
     public int registerNewExpert(User user) {
         int result=userDao.addNewUser(user);
+        expertDao.addNewExpert(user.getUserName());
         if(result<=0)
             return -1;
-        return generateExpertId();
+        return 1;
     }
 
     public boolean registerNewAdmin(User user) {
@@ -53,9 +54,12 @@ public class ManageServiceImpl implements ManageService{
     }
 
 
-    private int generateExpertId(){
+    /*private int generateExpertId(User user){
+        Expert expert=new Expert();
+        expert.setUserName(user.getUserName());
+        expertDao.setExpert(expert);
         return expertIdSeed++;
-    }
+    }*/
 
     public boolean checkUserValid(User user){
         String userName=user.getUserName();
@@ -64,7 +68,7 @@ public class ManageServiceImpl implements ManageService{
         String realUserType=realUser.getUserType();
         String password=user.getPassword();
         String realPassword=realUser.getPassword();
-        if(realUser==null||realUserType.equals(userType))
+        if(realUser==null||!realUserType.equals(userType))
             return false;
         if(checkPasswordValid(realPassword,password))
             return true;

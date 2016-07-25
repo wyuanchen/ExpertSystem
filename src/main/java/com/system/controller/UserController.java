@@ -36,11 +36,11 @@ public class UserController {
         String userType=user.getUserType();
         Map<String,Object> result=new HashMap<String, Object>();
         if(User.UserTypeExpert.equals(userType)){
-            int expertId=manageService.registerNewExpert(user);
-            if(expertId>0){
+            int isOk=manageService.registerNewExpert(user);
+            if(isOk>0){
                 result.put(keyStatus,valueStatusOk);
                 cookieService.setUserCookie(response,user.getUserName());
-                cookieService.setExpertIdCookie(response,expertId);
+//                cookieService.setExpertIdCookie(response,expertId);
             }else{
                 result.put(keyStatus,valueStatusFail);
             }
@@ -66,11 +66,11 @@ public class UserController {
         result.put(keyStatus,valueStatusOk);
         String userName=user.getUserName();
         cookieService.setUserCookie(response,userName);
-        String userType=user.getUserType();
-        if(User.UserTypeExpert.equals(userType)){
-            int expertId=manageService.getExpertId(userName);
-            cookieService.setExpertIdCookie(response,expertId);
-        }
+//        String userType=user.getUserType();
+//        if(User.UserTypeExpert.equals(userType)){
+//            int expertId=manageService.getExpertId(userName);
+//            cookieService.setExpertIdCookie(response,expertId);
+//        }
         return result;
     }
 

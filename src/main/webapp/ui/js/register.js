@@ -8,10 +8,20 @@ var isUserNameOk=false;
 var userType="专家";
 
 window.onload=function () {
+    setUserType();
     addOnclickListen();
     addFocusOutListener();
 }
 
+//获取用户类型
+function setUserType() {
+    var params=getUrlParams();
+    var type=params.userType;
+    if(type!=null&&type.trim()!=""){
+        if(type.trim()=="admin")
+            userType="管理员";
+    }
+}
 
 //设置点击事件监听者
 function addOnclickListen() {
