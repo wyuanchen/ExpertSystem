@@ -30,6 +30,7 @@ public class UserController {
     @Resource
     CookieService cookieService;
 
+
     @RequestMapping("/register")
     public @ResponseBody Object registerNewUser(@RequestBody User user,HttpServletResponse response){
         String userType=user.getUserType();

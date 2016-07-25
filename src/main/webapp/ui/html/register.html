@@ -13,57 +13,10 @@
     <!-- 可选的Bootstrap主题文件（一般不用引入） -->
     <link rel="stylesheet" href="../css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="../css/common.css">
-    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/register.css">
 
 </head>
 <body>
-
-<div class="container" id="login_div">
-    <h2>登陆界面</h2>
-    <form class="form-horizontal " id="login-form">
-        <div class="form-group">
-            <label class="col-md-2 col-md-offset-2 control-label">选择角色:</label>
-            <div class="btn-group col-md-4">
-                <button id="actorBtn" type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    专家 <span class="caret"></span>
-                </button>
-                <ul class="dropdown-menu">
-                    <li><a href="#" id="expert">专家</a></li>
-                    <li><a href="#" id="admin">管理员</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="col-md-2 col-md-offset-2 control-label">账号:</label>
-            <div class="col-md-4">
-                <input class="form-control" placeholder="请输入账号">
-            </div>
-            <a id="signup" href="register.html">注册</a>
-        </div>
-        <div class="form-group">
-            <label class="col-md-2 col-md-offset-2 control-label">密码:</label>
-            <div class="col-md-4">
-                <input type="text" class="form-control" placeholder="请输入密码">
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="col-md-2 col-md-offset-2 control-label">验证码:</label>
-            <div class="col-md-2">
-                <input class="form-control" placeholder="请输入验证码">
-            </div>
-            <div class="col-md-2">
-                <img  id="valid-img"  src="http://img.zcool.cn/community/010deb5639b56e32f87512f66e39c7.jpg">
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-md-3 col-md-offset-5" >
-                <button type="submit" class="btn btn-success" id="btn">登陆</button>
-            </div>
-
-        </div>
-    </form>
-</div>
-
 
 <div class="container" id="signup-div">
     <h2>注册新账号</h2>
@@ -71,12 +24,11 @@
         <div class="form-group">
             <label class="col-md-1 col-md-offset-3">用户名:</label>
             <div class="col-md-4">
-                <input class="form-control" placeholder="请入用户名">
+                <input  class="form-control" placeholder="请入用户名" id="user_name">
             </div>
             <div class="col-md-1">
                 <span class="label label-success result">可用</span>
                 <!--<span class="label label-danger result">不可用</span>-->
-
             </div>
         </div>
         <div class="row tip">
@@ -85,7 +37,7 @@
         <div class="form-group">
             <label class="col-md-1 col-md-offset-3">密码:</label>
             <div class="col-md-4">
-                <input class="form-control" placeholder="请入密码">
+                <input type="password" class="form-control" placeholder="请入密码" id="password">
             </div>
             <div class="col-md-1">
                 <!--<span class="label label-success result">可用</span>-->
@@ -99,14 +51,14 @@
         <div class="form-group">
             <label class="col-md-1 col-md-offset-3">密码确认:</label>
             <div class="col-md-4">
-                <input class="form-control" placeholder="请再一次确认密码">
+                <input type="password" class="form-control" placeholder="请再一次确认密码" id="password2">
                 <p class="text-danger">两次输入的密码不同，请重新输入</p>
             </div>
         </div>
         <div class="form-group">
             <label class="col-md-1 col-md-offset-3">验证码:</label>
             <div class="col-md-4">
-                <input class="form-control" placeholder="请再一次确认密码">
+                <input class="form-control" placeholder="请输入验证码" id="valid_code">
             </div>
             <div class="col-md-2 ">
                 <img id="valid-img2" src="http://www.qiaosheji.com/supesite/attachments/Upload/News/2009-3/2009033110030747509.jpg">
@@ -117,7 +69,7 @@
         </div>
         <div class="row">
             <div class="col-md-2 col-md-offset-4">
-                <button type="button" class="btn btn-success">注册</button>
+                <button type="button" class="btn btn-success" id="btn_submit_register">注册</button>
             </div>
             <div class="col-md-2">
                 <button type="reset" class="btn btn-primary">重置</button>
@@ -143,7 +95,7 @@
 <!--<script src="../js/jquery.min.js"/>-->
 <!--<script src="../js/bootstrap.min.js"/>-->
 <script src="../js/common.js"></script>
-<script src="../js/index.js"></script>
+<script src="../js/register.js"></script>
 </body>
 
 </html>

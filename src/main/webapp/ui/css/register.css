@@ -1,0 +1,39 @@
+
+
+#btn{
+    margin-left: -97px;
+    width: 361px;
+}
+
+#signup{
+    margin-left: -380px;
+}
+
+#signup-div{
+    text-align: center;
+    margin-top: 40px;
+}
+
+.tip{
+    margin-top: -19px;
+    margin-bottom: 8px;
+}
+
+#valid-img2{
+    height: 36px;
+    margin-left: -72px;
+}
+
+.text-danger{
+    opacity: 1;
+    margin-bottom: -5px;
+}
+
+label{
+    padding-top: 6px;
+}
+.result{
+    /*margin-left: -74px;*/
+    font-size: 13px;
+    line-height: 32px;
+}
