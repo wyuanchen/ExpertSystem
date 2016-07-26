@@ -33,4 +33,6 @@ public interface ExpertDao {
     int changeExpertStatusByExpertId(@Param("expertId")Integer expertId,@Param("status")String status);
 
     int setFailReason(Reason reason);
+
+    void deleteFailReason(Integer expertId);
 }

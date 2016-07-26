@@ -254,4 +254,8 @@
         DELETE FROM `reason` WHERE `expert_id`=#{expertId};
         INSERT INTO `reason`(`expert_id`,`fail_reason`,`reason_type`) VALUE (#{expertId},#{failReason},#{reasonType})
     </insert>
+
+    <delete id="deleteFailReason">
+        DELETE FROM `reason` WHERE `expert_id`=#{expertId}
+    </delete>
 </mapper>

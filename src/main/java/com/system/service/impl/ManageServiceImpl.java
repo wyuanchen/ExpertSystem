@@ -141,10 +141,12 @@ public class ManageServiceImpl implements ManageService{
     public boolean setExpertCertificate(String expertCertificateId, String certificateValidTime, Integer expertId){
         int affected=expertDao.setExpertCertificate(expertCertificateId,certificateValidTime,expertId);
         int isChangeSstatus=expertDao.changeExpertStatusByExpertId(expertId,"可用");
+        expertDao.deleteFailReason(expertId);
         return affected>0;
     }
     public boolean setFailReason(Reason reason){
         int affect=expertDao.setFailReason(reason);
+        expertDao.changeExpertStatusByExpertId(reason.getExpertId(),"失效");
         return affect>0;
     }
 

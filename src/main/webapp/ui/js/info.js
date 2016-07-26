@@ -52,7 +52,7 @@ function setExpertInfo(expertInfo) {
     setEvaluationExperiences(expertInfo.evaluationExperiences);
     setAvoidUnits(expertInfo.avoidanceUnits);
     setOnclickListener();
-
+    setFailReason(expertInfo.reason);
 }
 function setBasicInfo(template,info) {
     return fillTemplate(template,info);
@@ -119,6 +119,21 @@ function setAvoidUnits(avoidUnits) {
     }
 }
 
+//显示拒绝原因
+function setFailReason(reason) {
+    if(reason!=null){
+        var failReason=reason.failReason;
+        var reasonType=reason.reasonType;
+        if(reasonType=="拒绝"){
+            showRefuseReasonView();
+            $("#refuse_reason").prop("value",failReason);
+        }else{
+            showEndReasonView();
+            $("#end_reason").prop("value",failReason);
+        }
+    }
+}
+
 //通过专家审核
 function setReviewResult() {
     var expertCertificateId=$("#expert_certificate_id").prop("value").trim();
@@ -172,6 +187,8 @@ function cancelRefuse() {
     $("#end_reason").hide();
     $("#refuse_reason").hide();
 }
+
+
 
 
 
