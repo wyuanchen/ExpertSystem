@@ -6,6 +6,15 @@ package com.system.model;
 public class Reason {
     String failReason;
     String reasonType;
+    Integer expertId;
+
+    public void setExpertId(Integer expertId) {
+        this.expertId = expertId;
+    }
+
+    public Integer getExpertId() {
+        return expertId;
+    }
 
     public void setFailReason(String failReason) {
         this.failReason = failReason;

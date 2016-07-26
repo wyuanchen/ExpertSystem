@@ -2,6 +2,7 @@ package com.system.dao;
 
 import com.system.model.Expert;
 import com.system.model.ExpertDesc;
+import com.system.model.Reason;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -27,4 +28,9 @@ public interface ExpertDao {
     int getSumOfSubmitExpert();
 
     List<ExpertDesc> getAllExpertDesc(@Param("status") String status,@Param("field") String field);
+
+    int setExpertCertificate(@Param("expertCertificateId")String expertCertificateId, @Param("certificateValidTime") String certificateValidTime,@Param("expertId") Integer expertId);
+    int changeExpertStatusByExpertId(@Param("expertId")Integer expertId,@Param("status")String status);
+
+    int setFailReason(Reason reason);
 }

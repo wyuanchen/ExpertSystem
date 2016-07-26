@@ -3,6 +3,7 @@ package com.system.controller;
 import com.alibaba.fastjson.JSONObject;
 import com.system.model.Expert;
 import com.system.model.ExpertDesc;
+import com.system.model.Reason;
 import com.system.service.CookieService;
 import com.system.service.ManageService;
 import org.springframework.stereotype.Controller;
@@ -96,5 +97,29 @@ public class ExpertController {
         return expertDescList;
     }
 
+    @RequestMapping("/comfirmExpert")
+    public @ResponseBody Object comfirmExpert(@RequestBody JSONObject params){
+        Map<String,Object> result=new HashMap<String, Object>();
+        String expertCertificateId=params.getString("expertCertificateId");
+        String certificateValidTime=params.getString("certificateValidTime");
+        Integer expertId=params.getInteger("expertId");
+        boolean isOk=manageService.setExpertCertificate(expertCertificateId,certificateValidTime,expertId);
+        if(isOk)
+            result.put(keyStatus,valueStatusOk);
+        else
+            result.put(keyStatus,valueStatusFail);
+        return result;
+    }
+
+    @RequestMapping("/setFailReason")
+    public @ResponseBody Object setFailReason(@RequestBody Reason reason){
+        Map<String,Object> result=new HashMap<String, Object>();
+        boolean isOk=manageService.setFailReason(reason);
+        if(isOk)
+            result.put(keyStatus,valueStatusOk);
+        else
+            result.put(keyStatus,valueStatusFail);
+        return result;
+    }
 
 }

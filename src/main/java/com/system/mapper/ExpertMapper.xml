@@ -37,7 +37,7 @@
         <result column="achievement" property="achievement"/>
         <result column="others" property="others"/>
 
-        <association property="reason" column="{userN=user_name}" select="selectReason"/>
+        <association property="reason" column="{expertId=expert_id}" select="selectReason"/>
         <collection property="evaluationFields" column="{userName=user_name}" select="selectEvaluationFields"/>
         <collection property="qualifications" column="{userName=user_name}" select="selectQualifications"/>
         <collection property="avoidanceUnits" column="{userName=user_name}" select="selectAvoidanceUnits"/>
@@ -86,7 +86,7 @@
     </resultMap>
 
     <select id="selectReason" resultMap="reason" parameterType="java.util.Map">
-        SELECT * FROM `reason` WHERE `user_name`=#{userN} limit 0,1
+        SELECT * FROM `reason` WHERE `expert_id`=#{expertId} limit 0,1
     </select>
     <select id="selectEvaluationFields" resultType="java.lang.String" parameterType="java.util.Map">
         SELECT * FROM `evalution_field` WHERE `user_name`=#{userName}
@@ -241,4 +241,17 @@
             AND `idevalution_field_name`=#{field}
         </if>
     </select>
+
+    <update id="setExpertCertificate">
+        UPDATE `expert` SET `expert_certificate_id`=#{expertCertificateId},`certificate_valid_time`=#{certificateValidTime} WHERE `expert_id`=#{expertId}
+    </update>
+
+    <update id="changeExpertStatusByExpertId">
+        UPDATE `expert` SET `status`=#{status} WHERE `expert_id`=#{expertId}
+    </update>
+
+    <insert id="setFailReason" parameterType="com.system.model.Reason">
+        DELETE FROM `reason` WHERE `expert_id`=#{expertId};
+        INSERT INTO `reason`(`expert_id`,`fail_reason`,`reason_type`) VALUE (#{expertId},#{failReason},#{reasonType})
+    </insert>
 </mapper>

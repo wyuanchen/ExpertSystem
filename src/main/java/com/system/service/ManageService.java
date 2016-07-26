@@ -2,6 +2,7 @@ package com.system.service;
 
 import com.system.model.Expert;
 import com.system.model.ExpertDesc;
+import com.system.model.Reason;
 import com.system.model.User;
 
 import java.util.List;
@@ -42,4 +43,8 @@ public interface ManageService {
     int getSumOfSubmitExpert();
 
     List<ExpertDesc> getAllExpertDesc(String status, String field);
+
+    boolean setExpertCertificate(String expertCertificateId, String certificateValidTime, Integer expertId);
+
+    boolean setFailReason(Reason reason);
 }

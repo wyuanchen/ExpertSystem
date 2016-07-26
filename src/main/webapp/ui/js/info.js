@@ -1,4 +1,5 @@
 var num_certificate=1;
+var reasonType="拒绝";
 window.onload=function () {
     requestExpertByExpertId();
     // setExpertInfo();
@@ -18,20 +19,25 @@ function setOnclickListener() {
     $("body").on("click","#btn_permit",permitApply);
     $("body").on("click","#btn_refuse",showRefuseReasonView);
     $("body").on("click","#btn_end",showEndReasonView);
+    $("body").on("click","#btn_submit",submitRefuse);
+    $("body").on("click","#btn_cancel",cancelRefuse);
 }
 
 function permitApply() {
     $("#fail_reason").hide();
+    setReviewResult();
 }
 function showRefuseReasonView() {
     $(".end").hide();
     $("#fail_reason").show();
     $(".refuse").show();
+    reasonType="拒绝";
 }
 function showEndReasonView() {
     $(".refuse").hide();
     $("#fail_reason").show();
     $(".end").show();
+    reasonType="终止";
 }
 
 
@@ -111,6 +117,60 @@ function setAvoidUnits(avoidUnits) {
         var newItem=fillTemplate(template,avoidUnits[i]);
         $("#avoid_unit_tbody").append(newItem);
     }
+}
+
+//通过专家审核
+function setReviewResult() {
+    var expertCertificateId=$("#expert_certificate_id").prop("value").trim();
+    var certificateValidTime=$("#certificate_valid_time").prop("value").trim();
+    var urlParams=getUrlParams();
+    var expertId=urlParams.expertId;
+    if(expertCertificateId==null||expertCertificateId==""){
+        alert("专家证书编号不能为空!");
+        return;
+    }
+    if(certificateValidTime==null||certificateValidTime==""){
+        alert("证书有效时间不能为空!");
+        return;
+    }
+    var url=serverUrl+"comfirmExpert";
+    var params={
+        "expertCertificateId":expertCertificateId,
+        "certificateValidTime":certificateValidTime,
+        "expertId":expertId,
+    };
+    sendAjaxRequest(url,params,function (result) {
+        if(result!=null&&result.status=="ok")
+            window.location.reload();
+    });
+}
+
+function submitRefuse() {
+    var failReason="";
+    if(reasonType=="拒绝"){
+        failReason=$("#refuse_reason").prop("value").trim();
+    }else{
+        failReason=$("#end_reason").prop("value").trim();
+    }
+    var urlParams=getUrlParams();
+    var expertId=urlParams.expertId;
+    var params={
+        "failReason":failReason,
+        "reasonType":reasonType,
+        "expertId":expertId,
+    };
+    var url=serverUrl+"setFailReason";
+    sendAjaxRequest(url,params,function (result) {
+        if(result!=null&&result.status=="ok")
+            window.location.reload();
+    });
+}
+
+function cancelRefuse() {
+    $("#refuse_reason").prop("value","");
+    $("#end_reason").prop("value","");
+    $("#end_reason").hide();
+    $("#refuse_reason").hide();
 }
 
 

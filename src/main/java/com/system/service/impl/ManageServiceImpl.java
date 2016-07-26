@@ -5,6 +5,7 @@ import com.system.dao.ReasonDao;
 import com.system.dao.UserDao;
 import com.system.model.Expert;
 import com.system.model.ExpertDesc;
+import com.system.model.Reason;
 import com.system.model.User;
 import com.system.service.ManageService;
 import org.springframework.stereotype.Service;
@@ -135,6 +136,16 @@ public class ManageServiceImpl implements ManageService{
 
     public List<ExpertDesc> getAllExpertDesc(String status, String field){
         return expertDao.getAllExpertDesc(status,field);
+    }
+
+    public boolean setExpertCertificate(String expertCertificateId, String certificateValidTime, Integer expertId){
+        int affected=expertDao.setExpertCertificate(expertCertificateId,certificateValidTime,expertId);
+        int isChangeSstatus=expertDao.changeExpertStatusByExpertId(expertId,"可用");
+        return affected>0;
+    }
+    public boolean setFailReason(Reason reason){
+        int affect=expertDao.setFailReason(reason);
+        return affect>0;
     }
 
 
