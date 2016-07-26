@@ -77,6 +77,14 @@
         <result column="mission_type" property="missionType"/>
     </resultMap>
 
+    <resultMap id="expertDesc" type="com.system.model.ExpertDesc">
+        <id column="expert_id" property="expertId"/>
+        <result column="name" property="name"/>
+        <result column="workplace" property="workplace"/>
+        <result column="telephone" property="telephone"/>
+        <result column="status" property="status"/>
+    </resultMap>
+
     <select id="selectReason" resultMap="reason" parameterType="java.util.Map">
         SELECT * FROM `reason` WHERE `user_name`=#{userN} limit 0,1
     </select>
@@ -167,7 +175,7 @@
         `name`=#{name},`sex`=#{sex},`birthday`=#{birthday},
         `party`=#{party},`max_education`=#{maxEducation},`certificate_type`=#{certificateType},
         `certificate_id`=#{certificateId},`academic_degree`=#{academicDegree},`address`=#{address},`postcode`=#{postcode},
-        `university`=#{university},`telephone`=#{telephone},`email`=#{email},`homephone`=#{homephone},`title`=#{title},`post`=#{post},`is_retire`=#{isRetire},`workplace`=#{workplace},`employment_duration`=#{employmentDuration},`is_part_time`=#{isPartTime},`picture_path`=#{picturePath},`status`=#{status},`diploma_id`=#{diplomaId},`business_skill`=#{businessSkill},`achievement`=#{achievement},`others`=#{others},`organization`=#{organization}
+        `university`=#{university},`telephone`=#{telephone},`email`=#{email},`homephone`=#{homephone},`title`=#{title},`post`=#{post},`is_retire`=#{isRetire},`workplace`=#{workplace},`employment_duration`=#{employmentDuration},`is_part_time`=#{isPartTime},`picture_path`=#{picturePath},`diploma_id`=#{diplomaId},`business_skill`=#{businessSkill},`achievement`=#{achievement},`others`=#{others},`organization`=#{organization}
         WHERE `user_name`=#{userName};
 
         <if test="avoidanceUnits!=null and avoidanceUnits.size()>0">
@@ -215,5 +223,22 @@
 
     <!--INSERT INTO `expert`(`user_name`,`expert_certificate_id`,`certificate_valid_time`,`name`,`sex`,`birthday`,`party`,`max_education`,`certificate_type`,`certificate_id`,`academic_degree`,`address`,`postcode`,`university`,`telephone`,`email`,`homephone`,`title`,`post`,`is_retire`,`workplace`,`employment_duration`,`is_part_time`,`picture_path`,`status`,`diploma_id`,`business_skill`,`achievement`,`others`,`organization`)
         VALUE (#{userName},#{expertCertificateId},#{certificateValidTime},#{name},#{sex},#{birthday},#{party},#{maxEducation},#{certificateType},#{certificateId},#{academicDegree},#{address},#{postcode},#{university},#{telephone},#{email},#{homephone},#{title},#{post},#{isRetire},#{workplace},#{employmentDuration},#{isPartTime},#{picturePath},#{status},#{diplomaId},#{businessSkill},#{achievement},#{others},#{organization});-->
+    <update id="changeExpertStatus">
+        UPDATE `expert` SET `status`=#{status} WHERE `user_name`=#{userName}
+    </update>
 
+    <select id="getSumOfSubmitExpert" resultType="java.lang.Integer">
+        SELECT count(DISTINCT `expert_id`) FROM `expert` WHERE `status`='待审核'
+    </select>
+
+    <select id="getAllExpertDesc" resultMap="expertDesc">
+        SELECT DISTINCT `expert_id`,`name`,`workplace`,`telephone`,`status` FROM `expert` NATURAL JOIN `evalution_field`
+        WHERE TRUE
+        <if test="status!=null and status!=''">
+            AND `status`=#{status}
+        </if>
+        <if test="field!=null and field!=''">
+            AND `idevalution_field_name`=#{field}
+        </if>
+    </select>
 </mapper>

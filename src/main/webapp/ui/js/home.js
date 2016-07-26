@@ -7,35 +7,35 @@ var isPasswordConsistent=false;
 
 var expertInfoSample={
 
-        "expertCertificateId":123123123,
-        "certificateValidTime":"2014-02-01",
-        "status":"可用",
-        "name":"yuan",
-        "sex":"男",
-        "birthday":"1995-01-06",
-        "party":"群众",
-        "organization":"公安局",
-        "certificateType":"居民身份证",
-        "certificateId":"444444444444444444",
-        "maxEducation":"博士研究生",
-        "academicDegree":"博士",
-        "title":"教授",
-        "post":"教授",
-        "diplomaId":"163434",
-        "employmentDuration":"5年以上",
-        "isRetire":"否",
-        "isPartTime":"否",
-        "workplace":"华南理工大学",
-        "address":"广东广州市",
-        "postcode":510061,
-        "telephone":18826077178,
-        "email":"linsdf@163.com",
-        "homephone":"0663-2423433",
-        "university":"华南理工大学",
-        "businessSkill":"业务专长",
-        "achievement":"工作业绩",
-        "others":"其他说明",
-        "picturePath":"http://ww2.sinaimg.cn/crop.0.0.885.885.1024/6934a102jw8elmhozigdnj20ol0olmyv.jpg",
+    "expertCertificateId":123123123,
+    "certificateValidTime":"2014-02-01",
+    "status":"可用",
+    "name":"yuan",
+    "sex":"男",
+    "birthday":"1995-01-06",
+    "party":"群众",
+    "organization":"公安局",
+    "certificateType":"居民身份证",
+    "certificateId":"444444444444444444",
+    "maxEducation":"博士研究生",
+    "academicDegree":"博士",
+    "title":"教授",
+    "post":"教授",
+    "diplomaId":"163434",
+    "employmentDuration":"5年以上",
+    "isRetire":"否",
+    "isPartTime":"否",
+    "workplace":"华南理工大学",
+    "address":"广东广州市",
+    "postcode":510061,
+    "telephone":18826077178,
+    "email":"linsdf@163.com",
+    "homephone":"0663-2423433",
+    "university":"华南理工大学",
+    "businessSkill":"业务专长",
+    "achievement":"工作业绩",
+    "others":"其他说明",
+    "picturePath":"http://ww2.sinaimg.cn/crop.0.0.885.885.1024/6934a102jw8elmhozigdnj20ol0olmyv.jpg",
 
     "qualifications":  //资格证书以及编号
         [
@@ -223,6 +223,7 @@ function addInfoBodyButtonListener() {
     $("body").on("click","#btn_start_modify",permitModifyExpertInfo);
     $("body").on("click","#btn_save_modify",saveExpertInfoMidification);
     $("body").on("click",".dropdown",setDropDownListResult);
+    $("body").on("click","#btn_submit_modify",submitExpertStatus);
 }
 
 function saveExpertInfoMidification() {
@@ -584,9 +585,9 @@ function checkValidCode() {
     sendAjaxRequest(url,params,function (result) {
         if(result!=null&&result.status=="ok"){
             isValidCodeOk=true;
-            alert("验证码正确!");
+            // alert("验证码正确!");
         }else{
-            alert("验证码错误!");
+            // alert("验证码错误!");
         }
     });
 }
@@ -671,3 +672,17 @@ function handleChangePasswordResult(result) {
 function cancelPasswordChange() {
     location.reload();
 }
+
+//提交
+function submitExpertStatus() {
+    saveExpertInfoMidification();
+    var url=serverUrl+"submitInfo";
+    sendAjaxRequest(url,null,function (result) {
+        if(result!=null&&result.status=="ok")
+            alert("提交成功!");
+        else
+            alert("提交失败!");
+        location.reload();
+    });
+}
+

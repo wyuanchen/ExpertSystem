@@ -2,6 +2,7 @@ package com.system.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import com.system.model.Expert;
+import com.system.model.ExpertDesc;
 import com.system.service.CookieService;
 import com.system.service.ManageService;
 import org.springframework.stereotype.Controller;
@@ -12,6 +13,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Created by yuan on 7/14/16.
@@ -19,6 +23,11 @@ import javax.servlet.http.HttpServletResponse;
 @Controller
 public class ExpertController {
 
+    public static final String keyStatus="status";
+    public static final String valueStatusOk="ok";
+    public static final String valueStatusFail="fail";
+
+//    public static final String keyExpertDescs="expertDescs";
 
     @Resource
     ManageService manageService;
@@ -57,8 +66,35 @@ public class ExpertController {
         manageService.updateExpert(expert);
     }
 
+    @RequestMapping("/submitInfo")
+    public @ResponseBody Object submitInfo(HttpServletRequest request){
+        Map<String,Object> result=new HashMap<String, Object>();
+        String userName=cookieService.getUserName(request);
+        boolean isSubmit=manageService.changeExpertStatus(userName,"待审核");
+        if(isSubmit)
+            result.put(keyStatus,valueStatusOk);
+        else
+            result.put(keyStatus,valueStatusFail);
+        return result;
+    }
 
 
+    @RequestMapping("/getSumOfSubmitExpert")
+    public @ResponseBody Object getSumOfSubmitExpert(){
+        int sum=manageService.getSumOfSubmitExpert();
+        Map<String,Object> result=new HashMap<String, Object>();
+        result.put("sum",sum);
+        return result;
+    }
+
+
+    @RequestMapping("/getAllExpertDesc")
+    public @ResponseBody List<ExpertDesc> getAllExpertDesc(@RequestBody JSONObject params){
+        String status=params.getString("status");
+        String field=params.getString("field");
+        List<ExpertDesc> expertDescList=manageService.getAllExpertDesc(status,field);
+        return expertDescList;
+    }
 
 
 }

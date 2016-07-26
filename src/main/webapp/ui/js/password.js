@@ -47,9 +47,9 @@ function checkValidCode() {
     sendAjaxRequest(url,params,function (result) {
         if(result!=null&&result.status=="ok"){
             isValidCodeOk=true;
-            alert("验证码正确!");
+            // alert("验证码正确!");
         }else{
-            alert("验证码错误!");
+            // alert("验证码错误!");
         }
     });
 }

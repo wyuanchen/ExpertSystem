@@ -1,7 +1,10 @@
 package com.system.dao;
 
 import com.system.model.Expert;
+import com.system.model.ExpertDesc;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 /**
  * Created by yuan on 7/17/16.
@@ -18,4 +21,10 @@ public interface ExpertDao {
     public Expert getExpertByExpertId(@Param("expertId")Integer expertId);
     public int getExpertIdByUserName(@Param("userName")String userName);
     public int addNewExpert(@Param("userName")String userName);
+
+    int changeExpertStatus(@Param("userName") String userName,@Param("status") String status);
+
+    int getSumOfSubmitExpert();
+
+    List<ExpertDesc> getAllExpertDesc(@Param("status") String status,@Param("field") String field);
 }

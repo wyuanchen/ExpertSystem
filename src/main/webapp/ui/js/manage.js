@@ -7,5 +7,17 @@ window.onload=function () {
     // addClickListener();
     // addInfoBodyButtonListener();
     // selectView();
+    getSumOfSubmitExpert();
+}
+
+//获取待审核专家的数量
+function getSumOfSubmitExpert() {
+    var url=serverUrl+"getSumOfSubmitExpert";
+    sendAjaxRequest(url,null,function (result) {
+        if(result!=null){
+            var num=result.sum;
+            $("#num").text(num);
+        }
+    });
 }
 

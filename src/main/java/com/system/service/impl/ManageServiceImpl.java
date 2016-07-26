@@ -4,11 +4,13 @@ import com.system.dao.ExpertDao;
 import com.system.dao.ReasonDao;
 import com.system.dao.UserDao;
 import com.system.model.Expert;
+import com.system.model.ExpertDesc;
 import com.system.model.User;
 import com.system.service.ManageService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * Created by yuan on 7/20/16.
@@ -27,15 +29,36 @@ public class ManageServiceImpl implements ManageService{
     public Expert getExpert(String userName){
         if(userName==null)
             return null;
-        return expertDao.getExpertByUserName(userName);
+        Expert expert=expertDao.getExpertByUserName(userName);
+        wrapExpertStatus(expert);
+        return expert;
     }
+
+
 
     public void updateExpert(Expert expert){
         expertDao.setExpert(expert);
     }
 
     public Expert getExpertByExpertId(Integer expertId){
-        return expertDao.getExpertByExpertId(expertId);
+        Expert expert=expertDao.getExpertByExpertId(expertId);
+        wrapExpertStatus(expert);
+        return expert;
+    }
+
+    /**
+     * 封装专家的status
+     * @param expert
+     */
+    private void wrapExpertStatus(Expert expert) {
+        String status=expert.getStatus();
+        if(status==null)
+            return;
+        if(status.equals("待审核")){
+            expert.setStatus("审核中");
+        }else if(status.equals("失效")){
+            expert.setStatus("已驳回");
+        }
     }
 
     public int registerNewExpert(User user) {
@@ -99,6 +122,19 @@ public class ManageServiceImpl implements ManageService{
         if(user==null)
             return true;
         return false;
+    }
+
+    public boolean changeExpertStatus(String userName, String status){
+        int isChanged=expertDao.changeExpertStatus(userName,status);
+        return isChanged>0;
+    }
+
+    public int getSumOfSubmitExpert(){
+        return expertDao.getSumOfSubmitExpert();
+    }
+
+    public List<ExpertDesc> getAllExpertDesc(String status, String field){
+        return expertDao.getAllExpertDesc(status,field);
     }
 
 
