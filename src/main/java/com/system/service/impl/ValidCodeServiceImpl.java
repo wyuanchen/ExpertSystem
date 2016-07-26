@@ -43,7 +43,7 @@ public class ValidCodeServiceImpl implements ValidCodeService{
         HttpSession session=request.getSession();
         String realValidCode= (String) session.getAttribute(keyValidCode);
         session.removeAttribute(keyValidCode);
-        return validCode.equals(realValidCode);
+        return validCode.equalsIgnoreCase(realValidCode);
     }
 
 

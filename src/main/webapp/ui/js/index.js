@@ -1,11 +1,13 @@
 /**
  * Created by yuan on 16-7-12.
  */
-var isValidCodeOk=true;
+var isValidCodeOk=false;
 var userType="专家";
 
 window.onload=function () {
     addButtonListener();
+    addFocusOutListener();
+    initializeValidCodeImg();
 }
 
 
@@ -28,6 +30,11 @@ function addButtonListener() {
     $("#admin").on("click",actorOnlickListener);
     $("#expert").on("click",actorOnlickListener);
     $("body").on("click","#btn_signin",requestSignin);
+    $("body").on("click","#valid-img",changeValidCode);
+}
+
+function addFocusOutListener() {
+    $("body").on("focusout","#valid_code",checkValidCode);
 }
 
 //请求登陆
@@ -75,4 +82,35 @@ function handleSigninResult(result) {
             window.location.href='manage.html';
         }
     }
+}
+
+
+function initializeValidCodeImg() {
+    var url=serverUrl+"getNewValidCode?"
+    $("#valid-img").prop("src",url);
+}
+
+//请求新的验证码
+function changeValidCode() {
+    var url=$(this).prop("src");
+    url=url+Math.random();
+    $(this).prop("src",url);
+}
+
+//检验验证码
+function checkValidCode() {
+    isValidCodeOk=false;
+    var validCode=$(this).prop("value");
+    var url=serverUrl+"checkValidCode";
+    var params={
+        "validCode":validCode,
+    };
+    sendAjaxRequest(url,params,function (result) {
+        if(result!=null&&result.status=="ok"){
+            isValidCodeOk=true;
+            alert("验证码正确!");
+        }else{
+            alert("验证码错误!");
+        }
+    });
 }
