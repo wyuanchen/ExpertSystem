@@ -173,3 +173,12 @@ body{
 #new_password_error{
     display: none;
 }
+
+/*修改密码页面的按钮*/
+.btn_div{
+    text-align: center;
+}
+#btn_cancel{
+    margin-left: 162px;
+}
+/*end-修改密码页面的按钮*/
