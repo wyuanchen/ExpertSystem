@@ -114,6 +114,7 @@ public class Expert extends User{
     }
 
     public List<String> getEvaluationFields() {
+
         return evaluationFields;
     }
 
@@ -231,6 +232,8 @@ public class Expert extends User{
     }
 
     public void setCertificateValidTime(String certificateValidTime) {
+        if(certificateValidTime==null||"".equals(certificateValidTime.trim()))
+            return;
         this.certificateValidTime = certificateValidTime;
     }
 
@@ -243,6 +246,8 @@ public class Expert extends User{
     }
 
     public void setBirthday(String birthday) {
+        if(birthday==null||"".equals(birthday.trim()))
+            return;
         this.birthday = birthday;
     }
 

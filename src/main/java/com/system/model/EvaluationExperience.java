@@ -15,6 +15,8 @@ public class EvaluationExperience {
     }
 
     public void setExperienceTime(String experienceTime) {
+        if(experienceTime==null||"".equals(experienceTime.trim()))
+            return;
         this.experienceTime = experienceTime;
     }
 

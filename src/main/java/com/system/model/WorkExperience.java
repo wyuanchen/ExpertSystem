@@ -16,10 +16,14 @@ public class WorkExperience {
     }
 
     public void setStartTime(String startTime) {
+        if(startTime==null||"".equals(startTime.trim()))
+            return;
         this.startTime = startTime;
     }
 
     public void setEndTime(String endTime) {
+        if(endTime==null||"".equals(endTime.trim()))
+            return;
         this.endTime = endTime;
     }
 
