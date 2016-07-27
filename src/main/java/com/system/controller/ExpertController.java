@@ -128,12 +128,15 @@ public class ExpertController {
     }
 
     @RequestMapping("/uploadPic")
-    public void  handleUploadPic(@RequestParam("file")MultipartFile files, HttpServletRequest request){
+    public @ResponseBody Object  handleUploadPic(@RequestParam("file")MultipartFile files, HttpServletRequest request){
         String userName=cookieService.getUserName(request);
         String picUrl=fileService.saveImg(files);
         String oldPicUrl=manageService.getPicUrl(userName);
         fileService.deleteFile(oldPicUrl);
         manageService.setPicUrl(userName,picUrl);
+        Map<String,Object> result=new HashMap<String, Object>();
+        result.put(keyStatus,valueStatusOk);
+        return result;
 
     }
 

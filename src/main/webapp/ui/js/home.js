@@ -710,8 +710,10 @@ function previewFile() {
 
 //上传图片
 function setPicture() {
-    var formData=new FormData();
     var file=$("#img_upload")[0].files[0];
+    if(file==null)
+        return;
+    var formData=new FormData();
     formData.append('file',file);
     var url=serverUrl+"uploadPic";
     $.ajax({
