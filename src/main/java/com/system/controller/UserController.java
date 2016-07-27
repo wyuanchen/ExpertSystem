@@ -35,24 +35,15 @@ public class UserController {
 
     @RequestMapping("/register")
     public @ResponseBody Object registerNewUser(@RequestBody User user,HttpServletResponse response){
-        String userType=user.getUserType();
+        user.setUserType("专家");
         Map<String,Object> result=new HashMap<String, Object>();
-        if(User.UserTypeExpert.equals(userType)){
-            int isOk=manageService.registerNewExpert(user);
-            if(isOk>0){
-                result.put(keyStatus,valueStatusOk);
-                cookieService.setUserCookie(response,user.getUserName());
+        int isOk=manageService.registerNewExpert(user);
+        if(isOk>0){
+            result.put(keyStatus,valueStatusOk);
+            cookieService.setUserCookie(response,user.getUserName());
 //                cookieService.setExpertIdCookie(response,expertId);
-            }else{
-                result.put(keyStatus,valueStatusFail);
-            }
         }else{
-            if(manageService.registerNewAdmin(user)){
-                result.put(keyStatus,valueStatusOk);
-                cookieService.setUserCookie(response,user.getUserName());
-            }else{
-                result.put(keyStatus,valueStatusFail);
-            }
+            result.put(keyStatus,valueStatusFail);
         }
         return result;
     }
