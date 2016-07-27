@@ -5,11 +5,14 @@ import com.system.model.Expert;
 import com.system.model.ExpertDesc;
 import com.system.model.Reason;
 import com.system.service.CookieService;
+import com.system.service.FileService;
 import com.system.service.ManageService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -34,6 +37,8 @@ public class ExpertController {
     ManageService manageService;
     @Resource
     CookieService cookieService;
+    @Resource
+    FileService fileService;
 
     @RequestMapping("/getExpert")
     public @ResponseBody Expert getExpert(HttpServletRequest request){
@@ -120,6 +125,16 @@ public class ExpertController {
         else
             result.put(keyStatus,valueStatusFail);
         return result;
+    }
+
+    @RequestMapping("/uploadPic")
+    public void  handleUploadPic(@RequestParam("file")MultipartFile files, HttpServletRequest request){
+        String userName=cookieService.getUserName(request);
+        String picUrl=fileService.saveImg(files);
+        String oldPicUrl=manageService.getPicUrl(userName);
+        fileService.deleteFile(oldPicUrl);
+        manageService.setPicUrl(userName,picUrl);
+
     }
 
 }

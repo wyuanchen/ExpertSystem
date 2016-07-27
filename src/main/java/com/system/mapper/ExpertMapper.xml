@@ -175,7 +175,7 @@
         `name`=#{name},`sex`=#{sex},`birthday`=#{birthday},
         `party`=#{party},`max_education`=#{maxEducation},`certificate_type`=#{certificateType},
         `certificate_id`=#{certificateId},`academic_degree`=#{academicDegree},`address`=#{address},`postcode`=#{postcode},
-        `university`=#{university},`telephone`=#{telephone},`email`=#{email},`homephone`=#{homephone},`title`=#{title},`post`=#{post},`is_retire`=#{isRetire},`workplace`=#{workplace},`employment_duration`=#{employmentDuration},`is_part_time`=#{isPartTime},`picture_path`=#{picturePath},`diploma_id`=#{diplomaId},`business_skill`=#{businessSkill},`achievement`=#{achievement},`others`=#{others},`organization`=#{organization}
+        `university`=#{university},`telephone`=#{telephone},`email`=#{email},`homephone`=#{homephone},`title`=#{title},`post`=#{post},`is_retire`=#{isRetire},`workplace`=#{workplace},`employment_duration`=#{employmentDuration},`is_part_time`=#{isPartTime},`diploma_id`=#{diplomaId},`business_skill`=#{businessSkill},`achievement`=#{achievement},`others`=#{others},`organization`=#{organization}
         WHERE `user_name`=#{userName};
 
         <if test="avoidanceUnits!=null and avoidanceUnits.size()>0">
@@ -258,4 +258,12 @@
     <delete id="deleteFailReason">
         DELETE FROM `reason` WHERE `expert_id`=#{expertId}
     </delete>
+
+    <select id="getPicUrl" resultType="java.lang.String">
+        SELECT `picture_path` FROM `expert` WHERE `user_name`=#{userName}
+    </select>
+
+    <update id="setPicturePath">
+        UPDATE `expert` SET `picture_path`=#{picUrl} WHERE `user_name`=#{userName}
+    </update>
 </mapper>

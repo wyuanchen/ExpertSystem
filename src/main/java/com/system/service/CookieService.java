@@ -8,6 +8,12 @@ import javax.servlet.http.HttpServletResponse;
  */
 public interface CookieService {
 
+
+    /**
+     * 获取存放在cookie的用户名
+     * @param request
+     * @return null-找不到用户名
+     */
     public String getUserName(HttpServletRequest request);
     public int getExpertId(HttpServletRequest request);
     public void setExpertIdCookie(HttpServletResponse response, int expertId);

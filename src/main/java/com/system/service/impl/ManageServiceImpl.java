@@ -8,6 +8,7 @@ import com.system.model.ExpertDesc;
 import com.system.model.Reason;
 import com.system.model.User;
 import com.system.service.ManageService;
+import com.system.util.Configuration;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -149,6 +150,16 @@ public class ManageServiceImpl implements ManageService{
         expertDao.changeExpertStatusByExpertId(reason.getExpertId(),"失效");
         return affect>0;
     }
+
+    public String getPicUrl(String userName){
+        return expertDao.getPicUrl(userName);
+    }
+
+    public void setPicUrl(String userName,String picUrl){
+        picUrl=picUrl.replaceFirst(Configuration.imageDirectory,Configuration.serverPicUrl);
+        expertDao.setPicturePath(userName, picUrl);
+    }
+
 
 
 }

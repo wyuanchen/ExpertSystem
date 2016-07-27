@@ -229,6 +229,8 @@ function addInfoBodyButtonListener() {
 function saveExpertInfoMidification() {
     banModifyExpertInfo();
     requestUpdateExpertInfo();
+    setPicture();
+
 }
 
 function permitModifyExpertInfo(){
@@ -426,6 +428,7 @@ window.onload=function () {
     // setCookie();
     addClickListener();
     addInfoBodyButtonListener();
+    setOnchangeListener();
     selectView();
 }
 
@@ -445,6 +448,7 @@ function requestUpdateExpertInfo() {
     sendAjaxRequest(url,params,function () {
         alert("save success!");
     });
+
 }
 
 function wrapParams() {
@@ -686,3 +690,40 @@ function submitExpertStatus() {
     });
 }
 
+//为头像上传设置实时预览监听器
+function setOnchangeListener() {
+    $("body").on("change","#img_upload",previewFile);
+}
+
+//实时预览上传图片
+function previewFile() {
+    var preview=$("#picture");
+    var file=$("#img_upload")[0].files[0];
+    var reader=new FileReader();
+    reader.addEventListener("load",function () {
+       preview.prop("src",reader.result);
+    },false);
+    if(file){
+        reader.readAsDataURL(file);
+    }
+}
+
+//上传图片
+function setPicture() {
+    var formData=new FormData();
+    var file=$("#img_upload")[0].files[0];
+    formData.append('file',file);
+    var url=serverUrl+"uploadPic";
+    $.ajax({
+        url:url,
+        type:'POST',
+        cache:false,
+        data:formData,
+        processData:false,
+        contentType:false,
+        xhrFields: {
+            withCredentials: true
+        },
+        crossDomain: true,
+    });
+}

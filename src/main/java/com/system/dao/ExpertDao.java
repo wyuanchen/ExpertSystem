@@ -34,5 +34,9 @@ public interface ExpertDao {
 
     int setFailReason(Reason reason);
 
-    void deleteFailReason(Integer expertId);
+    void deleteFailReason(@Param("expertId") Integer expertId);
+
+    String getPicUrl(@Param("userName")String userName);
+
+    void setPicturePath(@Param("userName")String userName,@Param("picUrl")String picUrl);
 }

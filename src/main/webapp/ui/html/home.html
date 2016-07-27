@@ -141,7 +141,10 @@
                             <input class="form-control must-input basic_info" readonly value="$certificateValidTime$" id="certificateValidTime">
                         </td>
                         <td rowspan="4" colspan="2" style="text-align: center">
-                            <img id="picture" src="$picturePath$" alt="头像" class="img-rounded">
+                            <div id="img_div">
+                                <input type="file" id="img_upload">
+                                <img id="picture" src="$picturePath$" alt="头像" class="img-rounded">
+                            </div>
                         </td>
                     </tr>
                     <tr>

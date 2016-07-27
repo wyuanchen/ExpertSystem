@@ -18,6 +18,8 @@ public class CookieServiceImpl implements CookieService {
 
     public String getUserName(HttpServletRequest request){
         Cookie[] cookies=request.getCookies();
+        if(cookies==null)
+            return null;
         String userName=null;
         for(Cookie cookie:cookies){
             String cookieName=cookie.getName();

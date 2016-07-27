@@ -47,4 +47,8 @@ public interface ManageService {
     boolean setExpertCertificate(String expertCertificateId, String certificateValidTime, Integer expertId);
 
     boolean setFailReason(Reason reason);
+
+    String getPicUrl(String userName);
+
+    void setPicUrl(String userName,String picUrl);
 }
