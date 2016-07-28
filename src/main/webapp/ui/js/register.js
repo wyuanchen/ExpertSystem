@@ -106,6 +106,7 @@ function submitRegisterUser() {
     if(checkDataFormat()){
         var userName=$("#user_name").prop("value");
         var password=$("#password").prop("value");
+        password=md5(password);
         var user={
             "userName":userName,
             "password":password,
@@ -139,11 +140,8 @@ function handleRegisterResult(result) {
         return;
     }
     alert("注册成功!");
-    if(userType=='专家'){
-        window.location.href='home.html';
-    }else if(userType='管理员'){
-        window.location.href='manage.html';
-    }
+    window.location.href='home.html';
+
 }
 
 function initializeValidCodeImg() {

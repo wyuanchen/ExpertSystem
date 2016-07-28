@@ -44,6 +44,7 @@ function showEndReasonView() {
 //设置专家个人信息
 function setExpertInfo(expertInfo) {
     var template=$("#home_container_template").html();
+    $("#home_container_template").remove();
     template=setBasicInfo(template,expertInfo);
     $("#home_container").html(template);
     setQualifications(expertInfo.qualifications);

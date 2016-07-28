@@ -317,6 +317,7 @@ function setAvoidUnits(avoidUnits) {
 
 function setExpertInfo(expertInfo) {
     var template=$("#home_container_template").html();
+    $("#home_container_template").remove();
     template=setBasicInfo(template,expertInfo);
     $("#home_container").html(template);
     setQualifications(expertInfo.qualifications);
@@ -656,6 +657,8 @@ function requestChangePassword() {
     }
     var oldPassword=$("#current_password").prop("value");
     var newPassword=$("#new_password").prop("value");
+    oldPassword=md5(oldPassword);
+    newPassword=md5(newPassword);
     var url=serverUrl+"changepassword";
     var params={
         "oldPassword":oldPassword,

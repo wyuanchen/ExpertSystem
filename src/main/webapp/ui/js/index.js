@@ -67,7 +67,7 @@ function requestSignin() {
 
 //加密密码
 function encryptPassword(password) {
-    return password;
+    return md5(password);
 }
 
 //处理登陆返回结果
