@@ -29,6 +29,7 @@ function setUserType() {
 function addOnclickListen() {
     $("body").on("click","#btn_submit_register",submitRegisterUser);
     $("body").on("click","#valid-img2",changeValidCode);
+    $("body").on("click","#btn_return",returnToIndex);
 
 }
 
@@ -173,4 +174,9 @@ function checkValidCode() {
             alert("验证码错误!");
         }
     });
+}
+
+//返回登陆界面
+function returnToIndex() {
+    window.location.href="index.html";
 }
