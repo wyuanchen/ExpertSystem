@@ -8,7 +8,7 @@
     <name>yuan Maven Webapp</name>
     <url>http://maven.apache.org</url>
     <build>
-        <finalName>yuan</finalName>
+        <finalName>expertSystem</finalName>
         <resources>
             <resource>
                 <directory>src/main/resources</directory>

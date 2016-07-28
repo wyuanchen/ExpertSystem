@@ -11,9 +11,7 @@ import java.util.Properties;
 public class Configuration {
     private Configuration(){}
 
-    public static final String commonDirectory;
     public static final String imageDirectory;
-    public static final String dbBaseStorePath;
     public static final String serverPicUrl;
 
 
@@ -27,9 +25,7 @@ public class Configuration {
         }catch (Exception e){
             e.printStackTrace();
         }
-        commonDirectory=properties.getProperty("commonDirectory");
         imageDirectory=properties.getProperty("imageDirectory");
-        dbBaseStorePath=properties.getProperty("DBBaseStorePath");
         serverPicUrl=properties.getProperty("serverPicUrl");
     }
 
