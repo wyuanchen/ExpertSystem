@@ -28,6 +28,343 @@
 </div>
 <div class="home-container content-div" id="home_container">
 
+    <!--<div class="panel panel-primary" id="expert_panel">-->
+        <!--<div class="panel-heading" id="panel_head">-->
+            <!--<ol class="head_list">-->
+                <!--&lt;!&ndash; <li><a href="#">首页</a></li> &ndash;&gt;-->
+                <!--<li><a href="review.html">专家信息维护</a></li>-->
+                <!--<li><a href="#">专家详细信息</a></li>-->
+            <!--</ol>-->
+        <!--</div>-->
+        <!--<div class="panel-body info-body ">-->
+            <!--<div id="expert_info_list">-->
+                <!--<h2>基本信息</h2>-->
+                <!--<table class="table table-bordered">-->
+                    <!--<tbody>-->
+                    <!--<tr>-->
+                        <!--<td class="head-info">专家证书编号：</td>-->
+                        <!--&lt;!&ndash;<td></td>&ndash;&gt;-->
+                        <!--<td class="must result">-->
+                            <!--<input class="form-control must-input"  value="$expertCertificateId$" id="expert_certificate_id">-->
+                        <!--</td>-->
+                        <!--<td class="head-info">状态：</td>-->
+                        <!--<td id="status">$status$</td>-->
+                    <!--</tr>-->
+                    <!--<tr>-->
+                        <!--<td>证书有效时间</td>-->
+                        <!--<td>-->
+                            <!--<input class="form-control must-input"  value="$certificateValidTime$" id="certificate_valid_time">-->
+                        <!--</td>-->
+                        <!--<td rowspan="4" colspan="2" style="text-align: center">-->
+                            <!--<img id="picture" src="$picturePath$" alt="头像" class="img-rounded">-->
+                        <!--</td>-->
+                    <!--</tr>-->
+                    <!--<tr>-->
+                        <!--<td>专家姓名</td>-->
+                        <!--<td class="must">-->
+                            <!--<input class="form-control must-input" readonly value="$name$">-->
+                        <!--</td>-->
+                    <!--</tr>-->
+                    <!--<tr>-->
+                        <!--<td>专家性别</td>-->
+                        <!--<td class="must">-->
+                            <!--<input class="form-control must-input" readonly value="$sex$">-->
+                        <!--</td>-->
+                    <!--</tr>-->
+                    <!--<tr>-->
+                        <!--<td>出身日期</td>-->
+                        <!--<td class="must">-->
+                            <!--<input class="form-control must-input" readonly value="$birthday$">-->
+                        <!--</td>-->
+                    <!--</tr>-->
+                    <!--<tr>-->
+                        <!--<td>政治面貌</td>-->
+                        <!--<td class="must">-->
+                            <!--<input class="form-control must-input" readonly value="$party$">-->
+                        <!--</td>-->
+                        <!--<td>证件类型</td>-->
+                        <!--<td class="must">-->
+                            <!--<input class="form-control must-input" readonly value="$certificateType$">-->
+                        <!--</td>-->
+                    <!--</tr>-->
+                    <!--<tr>-->
+                        <!--<td>颁发机构</td>-->
+                        <!--<td class="must">-->
+                            <!--<input class="form-control must-input" readonly value="$organization$">-->
+
+                        <!--</td>-->
+                        <!--<td>证件编号:</td>-->
+                        <!--<td class="must">-->
+                            <!--<input class="form-control must-input" readonly value="$certificateId$">-->
+
+                        <!--</td>-->
+                    <!--</tr>-->
+                    <!--<tr>-->
+                        <!--<td>最高学历:</td>-->
+                        <!--<td class="must">-->
+                            <!--<input class="form-control must-input" readonly value="$maxEducation$">-->
+
+                        <!--</td>-->
+                        <!--<td>最高学位:</td>-->
+                        <!--&lt;!&ndash;<td></td>&ndash;&gt;-->
+                        <!--<td class="must">-->
+                            <!--<input class="form-control must-input" readonly value="$academicDegree$">-->
+                        <!--</td>-->
+                    <!--</tr>-->
+                    <!--<tr>-->
+                        <!--<td>职称:</td>-->
+                        <!--<td class="result must">-->
+                            <!--<input class="form-control must-input" readonly value="$title$">-->
+                        <!--</td>-->
+                        <!--<td>证书编号:</td>-->
+                        <!--<td class="result">-->
+                            <!--<input class="form-control must-input" readonly value="$diplomaId$">-->
+                        <!--</td>-->
+                    <!--</tr>-->
+                    <!--<tr>-->
+                        <!--<td>职务:</td>-->
+                        <!--<td class="result must">-->
+                            <!--<input class="form-control must-input" readonly value="$post$">-->
+                        <!--</td>-->
+                        <!--<td>从业时长:</td>-->
+                        <!--<td class="result">-->
+                            <!--<input class="form-control must-input" readonly value="$employmentDuration$">-->
+                        <!--</td>-->
+                    <!--</tr>-->
+                    <!--<tr>-->
+                        <!--<td>是否退休:</td>-->
+                        <!--<td class="must">-->
+                            <!--<input  class="form-control must-input" readonly value="$isRetire$">-->
+                        <!--</td>-->
+                        <!--<td>是否兼职:</td>-->
+                        <!--<td class="must">-->
+                            <!--<input  class="form-control must-input" readonly value="$isPartTime$">-->
+                        <!--</td>-->
+                    <!--</tr>-->
+                    <!--<tr>-->
+                        <!--<td>工作单位:</td>-->
+                        <!--<td class="result must" colspan="3">-->
+                            <!--<input class="form-control must-input" readonly value="$workplace$">-->
+                        <!--</td>-->
+                    <!--</tr>-->
+                    <!--<tr>-->
+                        <!--<td>详细通信地址:</td>-->
+                        <!--<td class="result must" colspan="3">-->
+                            <!--<input class="form-control must-input" readonly value="$address$">-->
+                        <!--</td>-->
+                    <!--</tr>-->
+                    <!--<tr>-->
+                        <!--<td>邮政编码:</td>-->
+                        <!--<td class="result must">-->
+                            <!--<input class="form-control must-input" readonly value="$postcode$">-->
+                        <!--</td>-->
+                        <!--<td>电子邮件:</td>-->
+                        <!--<td class="result must">-->
+                            <!--<input class="form-control must-input" readonly value="$email$">-->
+                        <!--</td>-->
+                    <!--</tr>-->
+                    <!--<tr>-->
+                        <!--<td>移动电话:</td>-->
+                        <!--<td class="result must">-->
+                            <!--<input class="form-control must-input" readonly value="$telephone$">-->
+                        <!--</td>-->
+                        <!--<td>家庭电话:</td>-->
+                        <!--<td class="result must">-->
+                            <!--<input class="form-control must-input" readonly value="$homephone$">-->
+                        <!--</td>-->
+                    <!--</tr>-->
+                    <!--<tr>-->
+                        <!--<td>毕业院校及专业:</td>-->
+                        <!--<td class="result must" colspan="3">-->
+                            <!--<input class="form-control must-input" readonly value="$university$">-->
+                        <!--</td>-->
+                    <!--</tr>-->
+                    <!--<tr id="certificate-item-first" class="certificate_tr">-->
+                        <!--<td id="certificate-title">资格证书名及编号:</td>-->
+                        <!--<td class="result certificate-name">-->
+                            <!--<input class='form-control must-input certificate-name-input' readonly value=''>-->
+                        <!--</td>-->
+                        <!--<td class="result certificate-num">-->
+                            <!--<input class='form-control must-input certificate-num-input' readonly value=''>-->
+                        <!--</td>-->
+                        <!--&lt;!&ndash; <td>-->
+                            <!--<button type="button" class="btn btn-success btn-add-certificate  btn_modify">增加资格证书</button>-->
+                            <!--<button type="button" class="btn btn-danger btn-delete-certificate-first  btn_modify">删除</button>-->
+                        <!--</td> &ndash;&gt;-->
+                    <!--</tr>-->
+                    <!--<tr>-->
+                        <!--<td>评审领域:</td>-->
+                        <!--<td class="result must" id="evaluation_field">1教育,5高校</td>-->
+                        <!--</td>-->
+                    <!--</tr>-->
+                    <!--</tbody>-->
+                <!--</table>-->
+
+                <!--<h2 style="display:inline">评估/评审经历</h2>-->
+                <!--<table class="table table-bordered">-->
+                    <!--<thead>-->
+                    <!--<tr>-->
+                        <!--<td>时间</td>-->
+                        <!--<td>任务名称</td>-->
+                        <!--<td>任务描述</td>-->
+                        <!--<td id="mission-type">任务类型</td>-->
+                    <!--</tr>-->
+                    <!--</thead>-->
+                    <!--<tbody id="body_evaluation_experience">-->
+                    <!--&lt;!&ndash;<tr>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<td class="evaluation_experience_td result experience_time">&ndash;&gt;-->
+
+                    <!--&lt;!&ndash;</td>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<td class="evaluation_experience_td result mission_name">&ndash;&gt;-->
+
+                    <!--&lt;!&ndash;</td>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<td class="evaluation_experience_td result mission_description">&ndash;&gt;-->
+
+                    <!--&lt;!&ndash;</td>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<td class="evaluation_experience_td result mission_type">&ndash;&gt;-->
+                    <!--&lt;!&ndash;<div class="input-group">&ndash;&gt;-->
+                    <!--&lt;!&ndash;<input type="text" class="form-control" value='评审'>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<div class="input-group-btn"><button type="button" class="btn btn-default dropdown-toggle btn_modify" data-toggle="dropdown">&ndash;&gt;-->
+                    <!--&lt;!&ndash;<span class="caret"></span></button><ul class="dropdown-menu pull-right">&ndash;&gt;-->
+                    <!--&lt;!&ndash;<li>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<a href="#">评估</a>&ndash;&gt;-->
+                    <!--&lt;!&ndash;</li>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<li>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<a href="#">评审</a>&ndash;&gt;-->
+                    <!--&lt;!&ndash;</li>&ndash;&gt;-->
+                    <!--&lt;!&ndash;</ul>&ndash;&gt;-->
+                    <!--&lt;!&ndash;</div>&lt;!&ndash; /btn-group &ndash;&gt;&ndash;&gt;-->
+                    <!--&lt;!&ndash;</div>&lt;!&ndash; /input-group &ndash;&gt;&ndash;&gt;-->
+                    <!--&lt;!&ndash;</td>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<td >&ndash;&gt;-->
+                    <!--&lt;!&ndash;<button type="button" class="btn btn-danger  btn_modify btn_delete_experience" >删除</button>&ndash;&gt;-->
+                    <!--&lt;!&ndash;</td>&ndash;&gt;-->
+                    <!--&lt;!&ndash;</tr>&ndash;&gt;-->
+                    <!--</tbody>-->
+                <!--</table>-->
+
+                <!--<h2 style="display:inline">工作经历</h2>-->
+                <!--<table class="table table-bordered">-->
+                    <!--<thead>-->
+                    <!--<tr>-->
+                        <!--<td>起始时间</td>-->
+                        <!--<td>终止时间</td>-->
+                        <!--<td>工作单位</td>-->
+                        <!--<td>职务</td>-->
+                        <!--<td>证明人</td>-->
+                    <!--</tr>-->
+                    <!--</thead>-->
+
+                    <!--<tbody id='work-experience-body'>-->
+                    <!--&lt;!&ndash;<tr>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<td class='work-experience-td start_time'>2011-12-20</td>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<td class='work-experience-td end_time'>2011-12-20</td>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<td class='work-experience-td workplace'>工作单位</td>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<td class='work-experience-td post'>职务</td>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<td class='work-experience-td  reference'>2011-12-20</td>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<td class='work-experience-td operation'>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<button type='button' class='btn btn-danger btn_delete_work_experience_body'>删除</button>&ndash;&gt;-->
+                    <!--&lt;!&ndash;</td>&ndash;&gt;-->
+                    <!--&lt;!&ndash;</tr>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<tr>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<td class='work-experience-td start_time'><input class='form-control must-input' readonly></td>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<td class='work-experience-td end_time'><input class='form-control must-input' readonly></td>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<td class='work-experience-td workplace'><input class='form-control must-input' readonly></td>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<td class='work-experience-td post'><input class='form-control must-input' readonly></td>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<td class='work-experience-td  reference'><input class='form-control must-input' readonly></td>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<td class='work-experience-td operation'>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<button type='button' class='btn btn-danger btn_delete_work_experience_body'>删除</button>&ndash;&gt;-->
+                    <!--&lt;!&ndash;</td>&ndash;&gt;-->
+                    <!--&lt;!&ndash;</tr>&ndash;&gt;-->
+                    <!--</tbody>-->
+                <!--</table>-->
+
+                <!--<h2 style="float:left">业务专长</h2>-->
+                <!--<h5 style="float:left;padding-top: 23px;">(不超过300个字)</h5>-->
+                <!--<div style="clear: both"></div>-->
+                <!--<textarea rows="5" class="form-control" readonly>$businessSkill$</textarea>-->
+
+                <!--<h2 style="float:left">工作业绩</h2>-->
+                <!--<h5 style="float:left;padding-top: 23px;">(不超过300个字)</h5>-->
+                <!--<div style="clear: both"></div>-->
+                <!--<textarea rows="5" class="form-control" style="margin-bottom: 10px" readonly>$achievement$</textarea>-->
+
+                <!--<h2 style="display: inline;">回避单位</h2>-->
+                <!--<table class="table table-bordered">-->
+                    <!--<thead>-->
+                    <!--<tr>-->
+                        <!--<td class="thead-avoid_unit_name">单位名称</td>-->
+                        <!--<td>是否工作单位</td>-->
+                    <!--</tr>-->
+                    <!--</thead>-->
+                    <!--<tbody id="avoid_unit_tbody">-->
+                    <!--&lt;!&ndash;<tr>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<td class='result-unit-name'>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<input class='form-control'>&ndash;&gt;-->
+                    <!--&lt;!&ndash;</td>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<td class='result-is-work-place'>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<div class='input-group'>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<input type='text' class='form-control'>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<div class='input-group-btn'>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<button type='button' class='btn btn-default  btn_modify&ndash;&gt;-->
+                    <!--&lt;!&ndash;dropdown-toggle' data-toggle='dropdown'>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<span class='caret'></span>&ndash;&gt;-->
+                    <!--&lt;!&ndash;</button>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<ul class='dropdown-menu pull-right'>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<li><a href='#'>是</a></li>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<li><a href='#'>否</a></li>&ndash;&gt;-->
+                    <!--&lt;!&ndash;</ul>&ndash;&gt;-->
+                    <!--&lt;!&ndash;</div>&lt;!&ndash; /btn-group &ndash;&gt;&ndash;&gt;-->
+                    <!--&lt;!&ndash;</div>&lt;!&ndash; /input-group &ndash;&gt;&ndash;&gt;-->
+
+                    <!--&lt;!&ndash;</td>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<td>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<button class='btn btn-danger btn_delete_unit  btn_modify'>删除</button>&ndash;&gt;-->
+                    <!--&lt;!&ndash;</td>&ndash;&gt;-->
+                    <!--&lt;!&ndash;</tr>&ndash;&gt;-->
+                    <!--</tbody>-->
+                <!--</table>-->
+
+                <!--<h2 style="float:left">其他说明</h2>-->
+                <!--<h5 style="float:left;padding-top: 23px;">(不超过300个字)</h5>-->
+                <!--<div style="clear: both"></div>-->
+                <!--<textarea rows="5" class="form-control" readonly>$others$</textarea>-->
+
+                <!--<table class="table-bordered table" id="table_control">-->
+                    <!--<thead>-->
+                    <!--<tr>-->
+                        <!--<td>-->
+                            <!--<button class="btn btn-info" id="btn_permit">同意申请</button>-->
+                        <!--</td>-->
+                        <!--<td>-->
+                            <!--<button class="btn btn-info" id="btn_refuse">驳回申请</button>-->
+                        <!--</td>-->
+                        <!--<td>-->
+                            <!--<button class="btn btn-info" id="btn_end">终止资格</button>-->
+                        <!--</td>-->
+                    <!--</tr>-->
+                    <!--</thead>-->
+                <!--</table>-->
+
+                <!--<div id="fail_reason">-->
+                    <!--<h2 style="float:left" class="refuse">请填写驳回原因</h2>-->
+                    <!--<h2 style="float:left" class="end">请填写终止原因</h2>-->
+                    <!--<h5 style="float:left;padding-top: 23px;">(不超过500个字)</h5>-->
+                    <!--<div style="clear: both"></div>-->
+                    <!--<textarea row="10" class="form-control refuse" id="refuse_reason"></textarea>-->
+                    <!--<textarea row="10" class="form-control  end" id="end_reason"></textarea>-->
+                    <!--<div id="final_btn_div">-->
+                        <!--<button class="btn btn-info" id="btn_submit">提交</button>-->
+                        <!--<button class="btn btn-danger" id="btn_cancel">取消</button>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+
+</div>
+
+<div class="template" id="home_container_template">
     <div class="panel panel-primary" id="expert_panel">
         <div class="panel-heading" id="panel_head">
             <ol class="head_list">
@@ -361,9 +698,7 @@
             </div>
         </div>
     </div>
-
 </div>
-
 
 <table class="template">
     <tbody id="work_experience_tr_template">
