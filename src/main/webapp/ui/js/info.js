@@ -155,6 +155,7 @@ function setReviewResult() {
         "certificateValidTime":certificateValidTime,
         "expertId":expertId,
     };
+    $("#home_container .time").each(checkDateInputFormat);
     sendAjaxRequest(url,params,function (result) {
         if(result!=null&&result.status=="ok")
             window.location.reload();

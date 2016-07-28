@@ -86,5 +86,18 @@ function fillTemplate(template, jsonData) {
         return ((value + "") == "undefined"||(value + "") == "null") ? "" : value;
     });
 }
+
+//检查日期输入的格式
+function checkDateInputFormat() {
+    var date=$(this).prop("value");
+    alert(date);
+    if(date==null||""==date.trim())
+        return;
+    date=date.trim();
+    var re=/^\d{4}-(0?[1-9]|1[0-2])-(0?[1-9]|[1-2]\d|3[0-1])$/g;
+    if(re.test(date)==false)
+        alert("日期格式请按yyyy-mm-dd进行填写!");
+}
+
 var serverIP = "http://localhost:8080/";
 var serverUrl = serverIP;

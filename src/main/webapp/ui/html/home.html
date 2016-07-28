@@ -169,9 +169,9 @@
                         </td>
                     </tr>
                     <tr>
-                        <td>出身日期</td>
+                        <td>出生日期</td>
                         <td class="must">
-                            <input type="date" class="form-control must-input basic_info" readonly value="$birthday$" id="birthday">
+                            <input type="date" class="form-control must-input basic_info time" readonly value="$birthday$" id="birthday">
                         </td>
                     </tr>
                     <tr>
@@ -545,8 +545,8 @@
 <table class="template">
     <tbody id="work_experience_tr_template">
     <tr class="work_experience_tr">
-        <td class='work-experience-td start_time'><input class='form-control must-input' readonly value="$startTime$"></td>
-        <td class='work-experience-td end_time'><input class='form-control must-input' readonly value="$endTime$"></td>
+        <td class='work-experience-td start_time'><input class='form-control must-input time' readonly value="$startTime$"></td>
+        <td class='work-experience-td end_time'><input class='form-control must-input time' readonly value="$endTime$"></td>
         <td class='work-experience-td workplace'><input class='form-control must-input' readonly value="$workplace$"></td>
         <td class='work-experience-td post'><input class='form-control must-input' readonly value="$post$"></td>
         <td class='work-experience-td  reference'><input class='form-control must-input' readonly value="$reference$"></td>
@@ -561,7 +561,7 @@
     <tbody id="evaluation_tr_template">
     <tr class="evaluation_experiences_tr">
         <td class="evaluation_experience_td result experience_time">
-            <input class="form-control" value="$experienceTime$">
+            <input class="form-control time" value="$experienceTime$">
         </td>
         <td class="evaluation_experience_td result mission_name">
             <input class="form-control" value="$missionName$">
