@@ -169,6 +169,12 @@ public class ManageServiceImpl implements ManageService{
         expertDao.setPicturePath(userName, picUrl);
     }
 
+    public boolean getAdmin(String userName){
+        if(userName==null)
+            return false;
+        int sum=userDao.getAdmin(userName);
+        return sum>0;
+    }
 
 
 }

@@ -9,7 +9,7 @@ window.onload=function () {
 
 //发送请求获取特定专家的信息
 function requestExpertByExpertId() {
-    var url=serverUrl+"getExpertById";
+    var url=serverUrl+"admin/getExpertById";
     var params=getUrlParams();
     sendAjaxRequest(url,params,setExpertInfo);
 }
@@ -148,7 +148,7 @@ function setReviewResult() {
         alert("证书有效时间不能为空!");
         return;
     }
-    var url=serverUrl+"comfirmExpert";
+    var url=serverUrl+"admin/comfirmExpert";
     var params={
         "expertCertificateId":expertCertificateId,
         "certificateValidTime":certificateValidTime,
@@ -174,7 +174,7 @@ function submitRefuse() {
         "reasonType":reasonType,
         "expertId":expertId,
     };
-    var url=serverUrl+"setFailReason";
+    var url=serverUrl+"admin/setFailReason";
     sendAjaxRequest(url,params,function (result) {
         if(result!=null&&result.status=="ok")
             window.location.reload();

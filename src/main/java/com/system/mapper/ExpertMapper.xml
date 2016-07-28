@@ -266,4 +266,6 @@
     <update id="setPicturePath">
         UPDATE `expert` SET `picture_path`=#{picUrl} WHERE `user_name`=#{userName}
     </update>
+
+
 </mapper>

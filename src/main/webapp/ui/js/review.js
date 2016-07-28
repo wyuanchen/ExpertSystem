@@ -64,6 +64,6 @@ function getAllExpertDesc() {
         "status":status,
         "field":field
     };
-    var url=serverUrl+"getAllExpertDesc";
+    var url=serverUrl+"admin/getAllExpertDesc";
     sendAjaxRequest(url,params,showExpertList);
 }

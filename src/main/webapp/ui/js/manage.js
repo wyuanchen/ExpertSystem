@@ -12,7 +12,7 @@ window.onload=function () {
 
 //获取待审核专家的数量
 function getSumOfSubmitExpert() {
-    var url=serverUrl+"getSumOfSubmitExpert";
+    var url=serverUrl+"admin/getSumOfSubmitExpert";
     sendAjaxRequest(url,null,function (result) {
         if(result!=null){
             var num=result.sum;

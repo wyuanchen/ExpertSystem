@@ -10,4 +10,6 @@ public interface UserDao {
     public User getUserByUserName(@Param("userName")String userName);
     public int addNewUser(User user);
     public int changeUserPassword(User user);
+
+    int getAdmin(@Param("userName") String userName);
 }

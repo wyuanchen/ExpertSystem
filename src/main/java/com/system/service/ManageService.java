@@ -51,4 +51,6 @@ public interface ManageService {
     String getPicUrl(String userName);
 
     void setPicUrl(String userName,String picUrl);
+
+    boolean getAdmin(String userName);
 }

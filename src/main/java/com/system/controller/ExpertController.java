@@ -47,7 +47,7 @@ public class ExpertController {
         return expert;
     }
 
-    @RequestMapping("/getExpertById")
+    @RequestMapping("/admin/getExpertById")
     public @ResponseBody Expert getExpertById(@RequestBody JSONObject expertIdJson){
         Integer expertId=expertIdJson.getInteger("expertId");
         Expert expert=manageService.getExpertByExpertId(expertId);
@@ -85,7 +85,7 @@ public class ExpertController {
     }
 
 
-    @RequestMapping("/getSumOfSubmitExpert")
+    @RequestMapping("/admin/getSumOfSubmitExpert")
     public @ResponseBody Object getSumOfSubmitExpert(){
         int sum=manageService.getSumOfSubmitExpert();
         Map<String,Object> result=new HashMap<String, Object>();
@@ -94,7 +94,7 @@ public class ExpertController {
     }
 
 
-    @RequestMapping("/getAllExpertDesc")
+    @RequestMapping("/admin/getAllExpertDesc")
     public @ResponseBody List<ExpertDesc> getAllExpertDesc(@RequestBody JSONObject params){
         String status=params.getString("status");
         String field=params.getString("field");
@@ -102,7 +102,7 @@ public class ExpertController {
         return expertDescList;
     }
 
-    @RequestMapping("/comfirmExpert")
+    @RequestMapping("/admin/comfirmExpert")
     public @ResponseBody Object comfirmExpert(@RequestBody JSONObject params){
         Map<String,Object> result=new HashMap<String, Object>();
         String expertCertificateId=params.getString("expertCertificateId");
@@ -116,7 +116,7 @@ public class ExpertController {
         return result;
     }
 
-    @RequestMapping("/setFailReason")
+    @RequestMapping("/admin/setFailReason")
     public @ResponseBody Object setFailReason(@RequestBody Reason reason){
         Map<String,Object> result=new HashMap<String, Object>();
         boolean isOk=manageService.setFailReason(reason);

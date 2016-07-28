@@ -44,4 +44,11 @@
         <property name="maxInMemorySize" value="40960" />
         <property name="uploadTempDir" value="fileUpload/temp"/>
     </bean>
+
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/admin/**"/>
+            <bean class="com.system.interceptor.UserAuthorityInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
 </beans>
