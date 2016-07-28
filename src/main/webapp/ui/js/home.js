@@ -325,6 +325,7 @@ function setExpertInfo(expertInfo) {
     setEvaluationExperiences(expertInfo.evaluationExperiences);
     setAvoidUnits(expertInfo.avoidanceUnits);
     banModifyExpertInfo();
+    checkExpertStatus(expertInfo.status);
 }
 
 function showModifyExpertInfoList() {
@@ -728,4 +729,11 @@ function setPicture() {
         },
         crossDomain: true,
     });
+}
+
+//检查专家审核状态
+function checkExpertStatus(status) {
+    if("审核中"==status){
+        $("#btn_submit_modify").prop("disabled","disabled");
+    }
 }
