@@ -10,6 +10,8 @@ import com.system.model.User;
 import com.system.service.ManageService;
 import com.system.util.Configuration;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -37,7 +39,7 @@ public class ManageServiceImpl implements ManageService{
     }
 
 
-
+    @Transactional(isolation = Isolation.READ_COMMITTED)
     public void updateExpert(Expert expert){
         expertDao.setExpert(expert);
     }
@@ -63,6 +65,7 @@ public class ManageServiceImpl implements ManageService{
         }
     }
 
+    @Transactional
     public int registerNewExpert(User user) {
         int result=userDao.addNewUser(user);
         expertDao.addNewExpert(user.getUserName());
@@ -71,6 +74,7 @@ public class ManageServiceImpl implements ManageService{
         return 1;
     }
 
+    @Transactional
     public boolean registerNewAdmin(User user) {
         int result=userDao.addNewUser(user);
         if(result>0)
@@ -109,6 +113,7 @@ public class ManageServiceImpl implements ManageService{
         return expertId;
     }
 
+    @Transactional
     public boolean changePassword(String userName, String oldPassword, String newPassowrd){
         User user=userDao.getUserByUserName(userName);
         String realPassword=user.getPassword();
@@ -139,12 +144,15 @@ public class ManageServiceImpl implements ManageService{
         return expertDao.getAllExpertDesc(status,field);
     }
 
+    @Transactional(isolation = Isolation.READ_COMMITTED)
     public boolean setExpertCertificate(String expertCertificateId, String certificateValidTime, Integer expertId){
         int affected=expertDao.setExpertCertificate(expertCertificateId,certificateValidTime,expertId);
         int isChangeSstatus=expertDao.changeExpertStatusByExpertId(expertId,"可用");
         expertDao.deleteFailReason(expertId);
         return affected>0;
     }
+
+    @Transactional(isolation = Isolation.READ_COMMITTED)
     public boolean setFailReason(Reason reason){
         int affect=expertDao.setFailReason(reason);
         expertDao.changeExpertStatusByExpertId(reason.getExpertId(),"失效");
@@ -155,6 +163,7 @@ public class ManageServiceImpl implements ManageService{
         return expertDao.getPicUrl(userName);
     }
 
+    @Transactional(isolation = Isolation.READ_COMMITTED)
     public void setPicUrl(String userName,String picUrl){
         picUrl=picUrl.replaceFirst(Configuration.imageDirectory,Configuration.serverPicUrl);
         expertDao.setPicturePath(userName, picUrl);
