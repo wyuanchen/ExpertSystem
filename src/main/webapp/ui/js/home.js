@@ -147,7 +147,7 @@ function delete_work_experience() {
     $(this).parent().parent().remove();
 }
 function add_work_experience() {
-    var newItem="<tr class='work_experience_tr'> <td class='work-experience-td start_time'><input class='form-control must-input time'></td> <td class='work-experience-td end_time'><input class='form-control must-input time'></td> <td class='work-experience-td workplace'><input class='form-control must-input'></td> <td class='work-experience-td post'><input class='form-control must-input'></td> <td class='work-experience-td  reference'><input class='form-control must-input'></td> <td class='work-experience-td operation'> <button type='button' class='btn btn-danger btn_delete_work_experience_body  btn_modify'>删除</button> </td> </tr>";
+    var newItem="<tr class='work_experience_tr'> <td class='work-experience-td start_time'><input type='date'  class='form-control must-input time'></td> <td class='work-experience-td end_time'><input type='date'   class='form-control must-input time'></td> <td class='work-experience-td workplace'><input class='form-control must-input'></td> <td class='work-experience-td post'><input class='form-control must-input'></td> <td class='work-experience-td  reference'><input class='form-control must-input'></td> <td class='work-experience-td operation'> <button type='button' class='btn btn-danger btn_delete_work_experience_body  btn_modify'>删除</button> </td> </tr>";
     $("#work-experience-body").append(newItem);
 }
 function delete_avoid_unit() {
@@ -710,7 +710,7 @@ function previewFile() {
     var file=$("#img_upload")[0].files[0];
     var reader=new FileReader();
     reader.addEventListener("load",function () {
-       preview.prop("src",reader.result);
+        preview.prop("src",reader.result);
     },false);
     if(file){
         reader.readAsDataURL(file);
@@ -759,3 +759,13 @@ function checkMustInput() {
         return false;
     return true;
 }
+
+
+
+
+
+
+
+
+
+
