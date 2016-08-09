@@ -684,6 +684,10 @@ function cancelPasswordChange() {
 
 //提交
 function submitExpertStatus() {
+    if(!checkMustInput()){
+        alert("带*为必填项!");
+        return;
+    }
     saveExpertInfoMidification();
     var url=serverUrl+"submitInfo";
     sendAjaxRequest(url,null,function (result) {
@@ -721,6 +725,7 @@ function setPicture() {
     var formData=new FormData();
     formData.append('file',file);
     var url=serverUrl+"uploadPic";
+    // var url="http://123.206.202.62/wall/"+"img/search";
     $.ajax({
         url:url,
         type:'POST',
@@ -740,4 +745,17 @@ function checkExpertStatus(status) {
     if("审核中"==status){
         $("#btn_submit_modify").prop("disabled","disabled");
     }
+}
+
+function checkMustInput() {
+    var inputs=$("input.must");
+    for(var i=0;i<inputs.length;i++){
+        var value=inputs.eq(i).prop("value");
+        if(value==null||""==value.trim())
+            return false;
+    }
+    var value=$("#evaluation_field").text();
+    if(value==null||""==value.trim())
+        return false;
+    return true;
 }

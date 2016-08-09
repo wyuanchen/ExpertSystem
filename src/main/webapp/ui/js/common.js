@@ -90,7 +90,7 @@ function fillTemplate(template, jsonData) {
 //检查日期输入的格式
 function checkDateInputFormat() {
     var date=$(this).prop("value");
-    alert(date);
+    // alert(date);
     if(date==null||""==date.trim())
         return;
     date=date.trim();
