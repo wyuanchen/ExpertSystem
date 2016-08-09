@@ -93,11 +93,13 @@ public class ManageServiceImpl implements ManageService{
     public boolean checkUserValid(User user){
         String userName=user.getUserName();
         User realUser=userDao.getUserByUserName(userName);
+        if(realUser==null)
+            return false;
         String userType=user.getUserType();
         String realUserType=realUser.getUserType();
         String password=user.getPassword();
         String realPassword=realUser.getPassword();
-        if(realUser==null||!realUserType.equals(userType))
+        if(!realUserType.equals(userType))
             return false;
         if(checkPasswordValid(realPassword,password))
             return true;

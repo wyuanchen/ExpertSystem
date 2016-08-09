@@ -129,6 +129,8 @@ public class ExpertController {
 
     @RequestMapping("/uploadPic")
     public @ResponseBody Object  handleUploadPic(@RequestParam("file")MultipartFile file, HttpServletRequest request){
+//        String oname=file.getOriginalFilename();
+//        String name=file.getOriginalFilename();
         String userName=cookieService.getUserName(request);
         String picUrl=fileService.saveImg(file);
         String oldPicUrl=manageService.getPicUrl(userName);
